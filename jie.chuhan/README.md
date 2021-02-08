@@ -1,4 +1,4 @@
-# Chuhan Jie
+# CHUHAN JIE
 
 ## Animal Tracker
 
