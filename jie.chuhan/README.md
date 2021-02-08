@@ -1,4 +1,4 @@
-# Hamilton Cline
+# Chuhan Jie
 
 ## Animal Tracker
 
