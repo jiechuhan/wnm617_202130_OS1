@@ -4,8 +4,8 @@
 
 ### Important Links
 
-- https://jiechuhan.com
-- https://jiechuhan.com/aau/wnm617/cline.hamilton
+- http://jiechuhan.com
+- http://jiechuhan.com/aau/wnm617/jie.chuhan
 
 - https://hdraws.com/aau/wnm617/cline.hamilton/
 
