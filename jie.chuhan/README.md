@@ -5,9 +5,8 @@
 ### Important Links
 
 - http://jiechuhan.com
-- http://jiechuhan.com/aau/wnm617/jie.chuhan
+- http://jiechuhan.com/aau/wnm_617/jie.chuhan/
 
-- https://hdraws.com/aau/wnm617/cline.hamilton/
 
 ### Git Notes
 
