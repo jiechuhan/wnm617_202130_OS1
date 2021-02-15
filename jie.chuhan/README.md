@@ -6,6 +6,7 @@
 
 - http://jiechuhan.com
 - http://jiechuhan.com/aau/wnm_617/jie.chuhan/
+- http://jiechuhan.com/aau/wnm_617/jie.chuhan/portfolio/
 
 
 ### Git Notes
