@@ -1,4 +1,4 @@
 *.DS_Store
 *sftp-config.json
 *auth.php
-module3
+module3/
