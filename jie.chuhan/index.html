@@ -123,11 +123,11 @@
  		<section data-role="page" id="recent-page">
  			<div data-role="main">
  				MAP!
- 				<hr>
+ 				<!-- <hr>
  				<button data-activate=".changeme" data-role="none">I am a activate button</button>
  				<button data-deactivate=".changeme" data-role="none">I am a deactivate button</button>
  				<button data-toggle=".changeme" data-role="none">I am a toggle button</button>
- 				<div class="changeme">I am a div</div>
+ 				<div class="changeme">I am a div</div> -->
 			</div>
 			<footer data-role="footer" data-template="#footer-template"></footer>
  		</section>
@@ -210,12 +210,14 @@
  				</div>
 
  				<div class="modal" id="user-settings-modal">
-		 			<div class="modal-back" data-deactivate="#user-settings-modal"></div>
+		 			<!-- <div class="modal-back" data-deactivate="#user-settings-modal"></div> -->
 	 				<div class="modal-drawer right">
 	 					<div class="modal-head display-flex">
-	 						<div class="modal-none">Head</div>
-	 						<div class="modal-stretch"></div>
-	 						<div class="modal-none"><a href="#" data-deactivate="#user-settings-modal">&time;</a></div>
+	 						<div class="flex-none">Head</div>
+	 						<div class="flex-stretch"></div>
+	 						<div class="flex-none">
+	 							<a href="#" data-deactivate="#user-settings-modal">&times;</a>
+	 						</div>
 	 					</div>
 	 					<div class="modal-body">
 	 						<div class="overscroll">
