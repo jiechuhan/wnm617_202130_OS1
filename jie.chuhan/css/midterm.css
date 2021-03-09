@@ -1,0 +1,482 @@
+/* CSS RESET */
+
+*, *::after, *::before {
+	box-sizing: border-box
+}
+
+:root {
+	--font-sans: 'Nunito', Helvetica, Arial, sans-serif;
+	--font-serif: Cambria, Georgia, serif;
+
+	--color-neutral-light: #ede9e9;
+	--color-neutral-medium: #999191;
+	--color-neutral-dark: #343030;
+
+	--color-main-light: #a8a4cf;
+	--color-main-medium: #605aa1;
+	--color-main-dark: #2c2949;
+
+	--color-white: #fff;
+	--color-black: #111;
+
+	--header-height: 3rem;
+}
+
+body {
+	margin: 0;
+	font-size: 100%;
+	font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+	font-family: var(--font-sans);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+hr {
+	border-top: 0.1px solid var(--color-neutral-light);
+}
+
+
+/* Layout Classes */
+
+.hidden { display: none; }
+
+.display-flex { display: flex; }
+.display-block {display: block;}
+.display-inline-flex {display: inline-flex;}
+.display-inline-block {display: inline-block;}
+
+.flex-stretch { flex: 1 1 auto; }
+.flex-none { flex: none; } 
+
+.flex-align-center { align-items: center; }
+.flex-justify-center { justify-content: center; }
+.flex-vertical { flex-direction: column; }
+
+
+/* PAGE ELEMENTS */
+[data-role="page"].ui-page-active {
+	display:flex;
+  	flex-direction:column;
+   	position: fixed;
+   	top: 0;
+   	left: 0;
+   	width: 100%;
+   	height: 100%;
+   	overflow: hidden;
+}
+
+
+[data-role="main"] {
+	flex: 1 1 100%;
+   	overflow: hidden;
+   	position: relative;
+}
+
+[data-role="header"],
+[data-role="footer"] {
+	flex: none;
+	line-height: var(--header-height);
+	border-width: 0;
+	background-color: var(--color-white);
+	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	position: relative;
+	overflow: hidden;
+}
+
+.ui-header .ui-title {
+	position: absolute;
+	top: 7vh;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	margin: 0;
+	font-size: 1.5rem;
+	padding: 0;
+	font-weight: 700;
+	background-color: var(--color-main-light);
+	color: var(--color-main-dark);
+}
+
+.ui-checkbox {
+	width: 50%;
+}
+
+.ui-input-search {
+	border: 1px solid var(--color-main-light);
+	border-radius: 1em;
+}
+
+[data-role="header"] {
+	height: 15vh;
+	background-color: var(--color-main-light);
+}
+
+[data-role="header"] img {
+	width: 30%;
+}
+
+[data-role="footer"] {
+	text-align: center;
+	height: var(--header-height);
+}
+
+[data-role="button"] {
+	padding: 0;
+	/*margin-left: 5%;*/
+}
+
+/*[data-role="footer"] img {
+	width: 30%;
+}*/
+
+.overscroll {
+ 	overflow: auto;
+ 	height: 100%;
+  	width: 100%;
+}
+
+
+
+
+/* Navigation Elements */
+[data-role="header"] ul,
+#vehicle-profile-page [data-role="main"] ul {
+	top: 7vh;
+ 	list-style-type: none;
+ 	margin: 0;
+ 	padding: 0;
+ 	display: flex;
+ 	position: relative;
+}
+
+[data-role="footer"] ul {
+	list-style-type: none;
+ 	margin: 0;
+ 	padding: 0;
+ 	display: flex;
+ 	position: relative;
+}
+
+[data-role="header"] li,
+#vehicle-profile-page [data-role="main"] li{
+	border-bottom: 0;
+}
+
+[data-role="footer"] li {
+  	text-align: center;
+  	flex: 1 1 auto;
+}
+
+[data-role="header"] a,
+#vehicle-profile-page [data-role="main"] a {
+  	display: block;
+  	margin: 0;
+  	padding: 0 1em;
+  	text-align: right;
+}
+
+[data-role="footer"] a {
+	display: block;
+ 	margin: 0;
+  	padding: 7px 1em;
+  	text-align: center;
+}
+
+[data-role="footer"] img {
+	height: 4vh;
+}
+
+#vehicle-profile-page [data-role="header"] ul li a,
+#add-new-page [data-role="header"] ul li a {
+	text-align: left;
+}
+
+
+
+
+
+
+
+
+
+/* FORM ELEMENTS */
+.form-control {
+	margin: 1em 0;
+}
+
+.ui-mobile .form-label {
+	margin: 1.5em 0 0.1em 0;
+	font-size: 1em;
+	font-family: var(--font-sans);
+	font-weight: 400;
+	color: var(--color-neutral-medium);
+}
+
+.form-input {
+	width: 100%;
+	display: inline-block;
+	border: 1px solid var(--color-neutral-medium);
+	margin: 0;
+	padding: 0.5em 1em;
+	border-radius: 1em;
+	outline: 0;
+	font: inherit;
+}
+
+.form-button {
+	margin: 0;
+	padding: 0.5em 1em;
+	border-radius: 1em;
+	border-width: 0;
+	width: 30%;
+	background-color: var(--color-main-light);
+	outline: 0;
+	display: inline-block;
+	font: inherit;
+	text-align: center;
+	cursor: pointer;
+}
+
+.form-button:hover {
+	text-decoration: none;
+	background-color: var(--color-main-dark);
+}
+
+
+
+/* SIGN IN*/
+.logo {
+	padding: 4%;
+}
+
+.logo img {
+	width: 40%;
+}
+
+ #triangle-left {
+	position: absolute;
+    right: 0;
+    top: 5vh;
+ 	width: 0;
+ 	height: 0;
+ 	border-top: 30vh solid transparent;
+ 	border-right: 40vh solid  var(--color-main-light);
+ 	border-bottom: 50vh solid transparent;
+ 	z-index: -50;
+ 	opacity: 0.5;
+}
+
+.welcome {
+	padding: 4%;
+	color: var(--color-main-dark);
+	margin-bottom: 0;
+}
+
+.welcome h1 {
+	font-size: 2.5em;
+	font-weight: 900;
+	margin: 0;
+}
+
+.welcome h3 {
+	font-size: 1.5em;
+	font-weight: 700;
+	margin: 0;
+}
+
+.keep {
+	padding: 0;
+	padding-left: 2.5em;
+	color: var(--color-main-dark);
+}
+
+.signin-button {
+	float: right;
+	color: var(--color-white);
+	display: block;
+}
+
+.register p {
+	margin: 0 0 0.5em 0;
+	text-align: center;
+	color: var(--color-main-dark);
+	font-weight: 400;
+}
+
+.register a {
+	color: var(--color-main-light);
+}
+
+
+/* MAP */
+#recent-page {
+	background-color: var(--color-main-light);
+}
+
+#recent-page [data-role="main"] {
+  background-image: url('../img/map.png');
+  background-position: center;
+  background-color: var(--color-main-light-light);
+  background-size: 100% 100%;
+}
+
+
+/* LIST */
+#list-page {
+	color: var(--color-main-dark);
+}
+
+.search {
+	margin-top: 3vh;
+}
+
+.search form {
+	width: 95%; 
+	height: 5vh; 
+	margin: 0 auto;
+}
+
+.sort {
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+}
+
+.sort .ui-btn {
+	padding: 0.3em 20px;
+}
+
+.sort .ui-select {
+	border: 1px solid var(--color-main-light);
+	border-radius: 1em;
+	margin-left: 3%;
+}
+
+#list-page .overscroll ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+#list-page .overscroll ul li {
+	margin-bottom: 2vh;
+	border-bottom: 0.1px solid var(--color-neutral-light);
+	padding: 5px 10px;
+}
+
+ #list-page .overscroll ul li img {
+	width: 20%;
+	align-self: center;
+}
+
+.list-item-text {
+	margin-left: 8%;
+}
+
+.list-item-text h3 {
+	margin: 1vh 0;
+	font-weight: 600;
+}
+
+.list-item-text p {
+	margin: 0;
+	font-weight: 400;
+}
+
+
+/* PROFILE */
+#profile-page {
+	color: var(--color-main-dark);
+}
+
+.profile-username {
+	margin: 3vh auto;
+	font-size: 1.5em;
+	font-weight: 600;
+	text-align: center;
+}
+
+.display-data {
+	margin-top: 4vh;
+}
+
+.display-number,
+.display-text {
+	display: flex;
+	font-size: 1em;
+	font-weight: 400;
+	text-align: center;
+}
+
+.display-number {
+	font-size: 1.5em;
+}
+
+.display-number p,
+.display-text p {
+	margin: 0 auto;
+}
+
+.display-number img {
+	width: 10%;
+	height: 10%;
+	margin: 0 25%;
+}
+
+#profile-form {
+	padding: 0.8em 2em 1em 2em;
+}
+
+#vehicle-profile-page [data-role="main"] ul {
+	width: 100%;
+	height: 10vh;
+	top: 0;
+}
+
+#vehicle-profile-page [data-role="main"] ul li {
+	text-align: center;
+	flex: 1;
+}
+
+/*#vehicle-profile-page [data-role="main"] ul li img {
+	width: 50%;
+	align-self: center;
+}*/
+
+#vehicle-profile-page [data-role="main"] ul li a {
+	height: 50%;
+	text-align: center;
+}
+
+#vehicle-profile-page [data-role="main"] ul li a img {
+	height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+

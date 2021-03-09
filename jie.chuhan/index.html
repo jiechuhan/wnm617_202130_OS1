@@ -9,7 +9,10 @@
 	<link rel="stylesheet" href="css/app.css">
 
 	<script src="lib/js/jquery-2.2.4.min.js"></script>
-	<script type="js/app.js"></script>
+
+	<script src="js/signin.js"></script>
+	<script src="js/app.js"></script>
+	
 	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
 
 </head>
@@ -105,10 +108,11 @@
 	 					</div>
 	 					<div class="form-control">
 	 						<label for="signin-password" class="form-label">Password</label>
-	 						<input class="form-input" type="passowrd" id="signin-password" data-role="none">
+	 						<input class="form-input" type="password" id="signin-password" data-role="none">
 	 					</div>
 	 					<div class="form-control">
-		 					<a href="#recent-page" class="form-button">Sign In</a>
+		 					<!-- <a href="#recent-page" class="form-button">Sign In</a> -->
+		 					<input type="submit" class="form-button" value="Sign In" data-role="none">
 		 				</div>
 	 				</form>
 	 			</div>
@@ -119,61 +123,137 @@
  		<section data-role="page" id="recent-page">
  			<div data-role="main">
  				MAP!
+ 				<hr>
+ 				<button data-activate=".changeme" data-role="none">I am a activate button</button>
+ 				<button data-deactivate=".changeme" data-role="none">I am a deactivate button</button>
+ 				<button data-toggle=".changeme" data-role="none">I am a toggle button</button>
+ 				<div class="changeme">I am a div</div>
 			</div>
-			<footer data-role="footer">
-				<a href="#recent-page">Recent</a>
-				<a href="#list-page">List</a>
-				<a href="#user-profile-page">Profile</a>
-			</footer>
+			<footer data-role="footer" data-template="#footer-template"></footer>
  		</section>
 
 
  		<section data-role="page" id="list-page">
  			<header data-role="header">
  				<h1>Search</h1>
+ 				<ul>
+ 					<li class="flex-stretch"></li>
+ 					<li><a href="#" class="js-list-add-animal"
+ 						data-activate="#list-add-modal">&plus;</a></li>
+ 				</ul>
  			</header>
  			<div data-role="main">
- 				<ul>
- 					<li><a href="#animal-profile-page">Animal 1</a></li>
- 					<li><a href="#animal-profile-page">Animal 2</a></li>
- 					<li><a href="#animal-profile-page">Animal 3</a></li>
- 					<li><a href="#animal-profile-page">Animal 4</a></li>
- 					<li><a href="#animal-profile-page">Animal 5</a></li>
- 					<li><a href="#animal-profile-page">Animal 6</a></li>
- 					<li><a href="#animal-profile-page">Animal 7</a></li>
- 					<li><a href="#animal-profile-page">Animal 8</a></li>
- 					<li><a href="#animal-profile-page">Animal 9</a></li>
- 					<li><a href="#animal-profile-page">Animal 10</a></li>
- 				</ul>
- 			</div>
- 				<footer data-role="footer">
- 					<a href="#recent-page">Recent</a>
- 					<a href="#list-page">List</a>
- 					<a href="#user-profile-page">Profile</a>
- 				</footer>
+ 				<div class="overscroll">
+	 				<ul>
+	 					<li><a href="#animal-profile-page">Animal 1</a></li>
+	 					<li><a href="#animal-profile-page">Animal 2</a></li>
+	 					<li><a href="#animal-profile-page">Animal 3</a></li>
+	 					<li><a href="#animal-profile-page">Animal 4</a></li>
+	 					<li><a href="#animal-profile-page">Animal 5</a></li>
+	 					<li><a href="#animal-profile-page">Animal 6</a></li>
+	 					<li><a href="#animal-profile-page">Animal 7</a></li>
+	 					<li><a href="#animal-profile-page">Animal 8</a></li>
+	 					<li><a href="#animal-profile-page">Animal 9</a></li>
+	 					<li><a href="#animal-profile-page">Animal 10</a></li>
+	 					<li data-template="#animal-link-template"></li>
+	 				</ul>
+	 			</div>
+	 		</div>
+
+	 
+ 			<footer data-role="footer" data-template="#footer-template"></footer>
+
+ 			<div class="modal" id="list-add-modal">
+	 			<div class="modal-back" data-deactivate="#list-add-modal"></div>
+ 				<form class="modal-popup" data-ajax="false" id="list-add-form">
+ 					<div class="modal-head">Head</div>
+ 					<div class="modal-body">
+ 						<div class="form-control">
+ 							<label for="list-add-name" class="form-label">Name</label>
+ 							<input class="form-input" type="text" id="list-add-name" data-role="none">
+ 						</div>
+ 						<div class="form-control">
+ 							<label for="list-add-type" class="form-label">Type</label>
+ 							<input class="form-input" type="text" id="list-add-type" data-role="none">
+ 						</div>
+ 						<div class="form-control">
+ 							<label for="list-add-bread" class="form-label">Breed</label>
+ 							<input class="form-input" type="text" id="list-add-breed" data-role="none">
+ 						</div>
+ 					</div>
+ 					<div class="modal-foot display-flex">
+ 						<div class="flex-stretch"></div>
+ 						<div class="flex-none">
+ 							<a href="#" data-deactivate="#list-add-modal">Submit</a>
+ 						</div>
+ 					</div>
+ 				</form>
+	 		</div>
  		</section>
 
+
+
+
+
+ 		<!-- USER DATA SECTIOIN -->
  		<section data-role="page" id="user-profile-page">
  			<div data-role="main">
  				Profile
  				<p>
- 					<a href="#signin-page">Sign Out</a>
+ 					<a href="#" class="js-logout">Sign Out</a>
  				</p>
+
+ 				<div class="floater top right">
+ 					<a href="#" class="icon" data-activate="#user-settings-modal">
+ 						<img src="img/home.png" alt="">
+ 					</a>
+ 				</div>
+
+ 				<div class="modal" id="user-settings-modal">
+		 			<div class="modal-back" data-deactivate="#user-settings-modal"></div>
+	 				<div class="modal-drawer right">
+	 					<div class="modal-head display-flex">
+	 						<div class="modal-none">Head</div>
+	 						<div class="modal-stretch"></div>
+	 						<div class="modal-none"><a href="#" data-deactivate="#user-settings-modal">&time;</a></div>
+	 					</div>
+	 					<div class="modal-body">
+	 						<div class="overscroll">
+		 						<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio impedit atque est saepe, illo, omnis, in autem excepturi tempora delectus possimus fuga fugit porro animi necessitatibus, illum voluptatibus cum quo! Aliquid vel ipsa non assumenda accusantium saepe praesentium, odit dignissimos voluptates aspernatur et ex eius, laboriosam alias harum quos omnis.</p>
+		 						<p>Aperiam dolores iure quae quidem, ab esse fuga illum saepe minus illo earum distinctio perferendis, veniam laboriosam obcaecati fugit nobis, cupiditate omnis nostrum hic doloribus. Voluptatum ipsa ad odio esse delectus atque ullam illo repudiandae porro est adipisci, et nulla velit autem, ab vitae, expedita illum dignissimos qui neque rem?</p>
+		 						<p>Temporibus, rerum recusandae nesciunt, voluptate doloremque molestias dolor vitae illum dolores laudantium consequatur et, ullam aperiam repellat excepturi labore commodi omnis eum animi. Cum necessitatibus temporibus unde, eius illum explicabo excepturi. Sequi, eum repellat consectetur pariatur neque eligendi odio itaque amet corrupti, possimus totam reiciendis sint voluptate, fuga. Debitis, error?</p>
+		 						<p>Accusamus ea, officiis illum dolor. Unde et, quidem reiciendis nostrum architecto ea natus alias officiis! Impedit eum aut laboriosam, qui quasi vitae optio? Earum, corrupti enim omnis maxime itaque nobis quaerat dolorem minus sit pariatur labore dolores soluta porro eos temporibus, rem, laudantium minima quas deserunt odio placeat. Vero, dolorem?</p>
+		 						<p>Maiores ipsam modi, eius ex molestiae quos sunt rem asperiores earum ipsum. Similique, ut fuga atque consequuntur officia quaerat magnam molestias maxime, in nemo ex labore voluptatibus accusamus, ullam unde repellendus libero quo sunt qui rerum impedit quas velit! Tempora, necessitatibus itaque porro fugit optio, totam non soluta facilis earum.</p>
+		 						<p>Soluta aliquam maiores harum optio excepturi sequi molestiae assumenda rem impedit! Consectetur quam aliquam blanditiis nobis recusandae cumque assumenda, sit enim ratione consequuntur explicabo expedita porro qui mollitia, molestiae optio beatae hic veritatis laudantium! Autem error possimus deleniti enim fuga odit nemo repellat dolores corporis neque, modi doloribus, et minima.</p>
+		 						<p>Labore quis dolorum et sunt ullam blanditiis quia, quo rerum corrupti quod laborum quaerat repellendus cupiditate molestias amet repudiandae enim, voluptates temporibus, obcaecati hic vitae itaque nam reprehenderit quibusdam eum. Nemo, maiores quis a itaque hic non doloribus vitae odit, quaerat, nesciunt in beatae. Odit quas iusto, laudantium facilis est!</p>
+		 						<p>Dolorum illo suscipit accusamus recusandae doloremque reiciendis tenetur unde cum reprehenderit aliquid dolores sapiente voluptatum aut repellendus, autem laboriosam id nobis adipisci et. Voluptatem exercitationem itaque, veritatis debitis officiis molestias fuga tenetur dolores dignissimos, enim sapiente, ut unde odio incidunt voluptates cupiditate libero esse iure labore, aliquam facere. Perspiciatis, maiores.</p>
+		 						<p>Veniam nesciunt eligendi cupiditate placeat, iure perferendis saepe, distinctio, iusto ex tenetur ipsum consectetur totam omnis obcaecati maiores est libero alias facilis nostrum tempore illo repellendus suscipit dolore quam? Fuga facere, commodi quo laboriosam libero! Ex omnis minima cupiditate corrupti, numquam at, sint dicta eveniet mollitia id, molestiae ea culpa!</p>
+		 						<p>Debitis ullam explicabo enim vero consequatur amet sint tempora at similique ipsam, molestiae neque nisi accusamus sequi expedita, quidem pariatur necessitatibus, et inventore maiores temporibus. Laudantium modi, doloremque libero possimus quibusdam odio suscipit veritatis, et corporis maiores dolor voluptatum hic officiis saepe totam minima praesentium minus alias quia ratione vero.</p>
+		 					</div>
+	 					</div>
+	 				</div>
+		 		</div>
  			</div>
-			<footer data-role="footer">
-				<a href="#recent-page">Recent</a>
-				<a href="#list-page">List</a>
-				<a href="#user-profile-page">Profile</a>
-			</footer>
+
+			<footer data-role="footer" data-template="#footer-template"></footer>
+
+			
  		</section>
 
+
+
+
+
+ 		<!-- ANIIMAL DATA SECTION -->
  		<section data-role="page" id="animal-profile-page">
  			<header data-role="header">
  				<h1>Search</h1>
  				<a href="#" data-rel="back">Back</a>
  			</header>
  			<div data-role="main">
- 				Animal Profile!
+ 				<ul>
+ 					<li></li>
+ 				</ul>
  			</div>
  		</section>
 
@@ -183,28 +263,18 @@
 
 
 
+ 		<script type="text/template" id="animal-link-template">
+ 			this is an animal link
+ 		</script>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 		<script type="text/template" id="footer-template">
+ 			<ul>
+				<li><a href="#recent-page">Recent</a></li>
+				<li><a href="#list-page">List</a></li>
+				<li><a href="#user-profile-page">Profile</a></li>
+			</ul>
+ 		</script>
 
 
 </body>
