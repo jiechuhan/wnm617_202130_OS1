@@ -73,6 +73,9 @@ a:hover {
   width: 100%;
 }
 
+.no-touch { pointer-events: none; }
+.do-touch { pointer-events: all; }
+
 
 
 
@@ -123,12 +126,14 @@ a:hover {
 
 
 /* Navigation Elements */
+.header a,
 [data-role="header"] a,
 [data-role="footer"] a {
   display: block;
   margin: 0;
 }
 
+.header ul,
 [data-role="header"] ul,
 [data-role="footer"] ul {
   list-style-type: none;
@@ -143,11 +148,16 @@ a:hover {
   flex: 1 1 auto;
 }
 
+.header a,
 [data-role="header"] a {
   padding: 0 1em;
 }
 
-
+.header {
+  width: 100%;
+  height: var(--header-height);
+  line-height: var(--header-height);
+}
 
 
 
@@ -243,6 +253,10 @@ a:hover {
   pointer-events: initial;
 }
 
+.modal-popup.small {
+  width: initial;
+}
+
 
 .modal-drawer {
   position: absolute;
@@ -330,13 +344,30 @@ a:hover {
 
 
 
+
+
+
+.animal-top {
+  flex: none;
+  height: 40vh;
+}
+
+.animal-bottom {
+  flex: 1 1 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+
+
+.animal-top,
 #recent-page [data-role="main"] {
   background-image: url('../img/map.png');
   background-position: center;
   background-size: cover;
 }
-
-
 
 
 

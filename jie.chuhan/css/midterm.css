@@ -45,17 +45,15 @@ a {
 	font-weight: bold;
 }
 
-a:hover {
-	text-decoration: underline;
-}
-
 hr {
 	border-top: 0.1px solid var(--color-neutral-light);
 }
 
 
-/* Layout Classes */
 
+
+
+/* Layout Classes */
 .hidden { display: none; }
 
 .display-flex { display: flex; }
@@ -71,6 +69,9 @@ hr {
 .flex-vertical { flex-direction: column; }
 
 
+
+
+
 /* PAGE ELEMENTS */
 [data-role="page"].ui-page-active {
 	display:flex;
@@ -82,7 +83,6 @@ hr {
    	height: 100%;
    	overflow: hidden;
 }
-
 
 [data-role="main"] {
 	flex: 1 1 100%;
@@ -141,18 +141,14 @@ hr {
 
 [data-role="button"] {
 	padding: 0;
-	/*margin-left: 5%;*/
 }
-
-/*[data-role="footer"] img {
-	width: 30%;
-}*/
 
 .overscroll {
  	overflow: auto;
  	height: 100%;
   	width: 100%;
 }
+
 
 
 
@@ -202,17 +198,13 @@ hr {
 }
 
 [data-role="footer"] img {
-	height: 4vh;
+	height: 2em;
 }
 
 #vehicle-profile-page [data-role="header"] ul li a,
 #add-new-page [data-role="header"] ul li a {
 	text-align: left;
 }
-
-
-
-
 
 
 
@@ -260,6 +252,112 @@ hr {
 	text-decoration: none;
 	background-color: var(--color-main-dark);
 }
+
+
+
+
+
+/* MODAL */
+.modal,
+.modal-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal {
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.modal.active {
+  opacity: 1;
+}
+
+.modal-back {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal.active .modal-back {
+  pointer-events: initial;
+}
+
+.modal-popup {
+  position: absolute;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 5vh));
+  transition: all 0.3s;
+}
+
+.modal.active .modal-popup {
+  transform: translate(-50%, -50%);
+  pointer-events: initial;
+}
+
+.modal-drawer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.modal-drawer.left,
+.modal-drawer.right {
+  height: 100%;
+  width: 70vw;
+}
+
+.modal-drawer.left { left: 0; transform: translateX(-100%); }
+.modal-drawer.right { right: 0; transform: translateX(100%); }
+
+.modal-drawer.top,
+.modal-drawer.bottom {
+  height: 30vh;
+  width: 100%;
+}
+
+.modal-drawer.top { top: 0; transform: translateY(-100%); }
+.modal-drawer.bottom { bottom: 0; transform: translateY(100%); }
+
+.modal.active .modal-drawer {
+  transform: translate(0);
+  pointer-events: initial;
+}
+
+.modal-head,
+.modal-foot {
+  background-color: var(--color-neutral-light);
+  padding: 0.5em 1em;
+}
+
+.modal-body {
+  background-color: var(--color-white);
+  flex: 1 1 100%;
+  padding: 0.5em 1em;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-popup :first-child {
+  border-radius: 5px 5px 0 0;
+}
+
+.modal-popup :last-child {
+  border-radius: 0 0 5px 5px;
+}
+
+
+
+
+
+
+
 
 
 
@@ -327,6 +425,9 @@ hr {
 }
 
 
+
+
+
 /* MAP */
 #recent-page {
 	background-color: var(--color-main-light);
@@ -338,6 +439,10 @@ hr {
   background-color: var(--color-main-light-light);
   background-size: cover;
 }
+
+
+
+
 
 
 /* LIST */
@@ -402,15 +507,26 @@ hr {
 }
 
 
+
+
+
 /* PROFILE */
 #profile-page {
 	color: var(--color-main-dark);
 }
 
-.profile-username {
+.profile-username,
+.profile-model {
 	margin: 3vh auto;
 	font-size: 1.5em;
 	font-weight: 600;
+	text-align: center;
+}
+
+.profile-model {
+	position: absolute;
+	margin: 0;
+	width: 100%;
 	text-align: center;
 }
 
@@ -435,11 +551,11 @@ hr {
 	margin: 0 auto;
 }
 
-.display-number img {
+/*.display-number img {
 	width: 10%;
 	height: 10%;
 	margin: 0 25%;
-}
+}*/
 
 #profile-form {
 	padding: 0.8em 2em 1em 2em;
@@ -447,7 +563,6 @@ hr {
 
 #vehicle-profile-page [data-role="main"] ul {
 	width: 100%;
-	height: 10vh;
 	top: 0;
 }
 
@@ -456,19 +571,33 @@ hr {
 	flex: 1;
 }
 
-/*#vehicle-profile-page [data-role="main"] ul li img {
-	width: 50%;
-	align-self: center;
-}*/
-
 #vehicle-profile-page [data-role="main"] ul li a {
-	height: 50%;
+	height: 100%;
 	text-align: center;
 }
 
 #vehicle-profile-page [data-role="main"] ul li a img {
-	height: 100%;
+	height: 2em;
 }
+
+.middle-title {
+  flex: none;
+  height: 12vh;
+}
+
+.down-section {
+  flex: 1 1 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.icon img {
+  height: 1em;
+  vertical-align: text-bottom;
+}
+
+
+
 
 
 
