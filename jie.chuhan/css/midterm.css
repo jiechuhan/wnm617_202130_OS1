@@ -103,7 +103,7 @@ hr {
 
 .ui-header .ui-title {
 	position: absolute;
-	top: 7vh;
+	top: 3vh;
 	left: 0;
 	width: 100%;
 	height: 100%;
@@ -112,8 +112,9 @@ hr {
 	font-size: 1.5rem;
 	padding: 0;
 	font-weight: 700;
-	background-color: var(--color-main-light);
+	/*background-color: var(--color-main-light);*/
 	color: var(--color-main-dark);
+	z-index: 1000000;
 }
 
 .ui-checkbox {
@@ -156,7 +157,7 @@ hr {
 /* Navigation Elements */
 [data-role="header"] ul,
 #vehicle-profile-page [data-role="main"] ul {
-	top: 7vh;
+	top: 3vh;
  	list-style-type: none;
  	margin: 0;
  	padding: 0;
@@ -220,13 +221,13 @@ hr {
 	font-size: 1em;
 	font-family: var(--font-sans);
 	font-weight: 400;
-	color: var(--color-neutral-medium);
+	/*color: var(--color-neutral-medium);*/
 }
 
 .form-input {
 	width: 100%;
 	display: inline-block;
-	border: 1px solid var(--color-neutral-medium);
+	border: 1px solid var(--color-main-light);
 	margin: 0;
 	padding: 0.5em 1em;
 	border-radius: 1em;
@@ -310,7 +311,7 @@ hr {
 .modal-drawer.left,
 .modal-drawer.right {
   height: 100%;
-  width: 70vw;
+  width: 90vw;
 }
 
 .modal-drawer.left { left: 0; transform: translateX(-100%); }
@@ -332,7 +333,7 @@ hr {
 
 .modal-head,
 .modal-foot {
-  background-color: var(--color-neutral-light);
+  background-color: #e7e6f0;
   padding: 0.5em 1em;
 }
 
@@ -342,6 +343,10 @@ hr {
   padding: 0.5em 1em;
   position: relative;
   overflow: hidden;
+}
+
+.modal-popup img {
+	width: 100%;
 }
 
 .modal-popup :first-child {
@@ -370,7 +375,8 @@ hr {
 	width: 40%;
 }
 
- #triangle-left {
+ #triangle-left,
+ #triangle-left-register {
 	position: absolute;
     right: 0;
     top: 5vh;
@@ -383,22 +389,33 @@ hr {
  	opacity: 0.5;
 }
 
-.welcome {
+#triangle-left-register {
+	border-right: 40vh solid #a0bfdd;
+}
+
+.welcome,
+.welcome-register {
 	padding: 4%;
 	color: var(--color-main-dark);
 	margin-bottom: 0;
 }
 
-.welcome h1 {
+.welcome h1,
+.welcome-register h1 {
 	font-size: 2.5em;
 	font-weight: 900;
 	margin: 0;
 }
 
-.welcome h3 {
+.welcome h3,
+.welcome-register h3 {
 	font-size: 1.5em;
 	font-weight: 700;
 	margin: 0;
+}
+
+.welcome-register {
+	color: #202f40;
 }
 
 .keep {
@@ -413,7 +430,8 @@ hr {
 	display: block;
 }
 
-.register p {
+.register p,
+.register-register p {
 	margin: 0 0 0.5em 0;
 	text-align: center;
 	color: var(--color-main-dark);
@@ -422,6 +440,14 @@ hr {
 
 .register a {
 	color: var(--color-main-light);
+}
+
+.register-register p {
+	color: #202f40;
+}
+
+.register-register a {
+	color: #a0bfdd;
 }
 
 
@@ -483,7 +509,7 @@ hr {
 
 #list-page .overscroll ul li {
 	margin-bottom: 2vh;
-	border-bottom: 0.1px solid var(--color-neutral-light);
+	border-bottom: 0.1px solid #e7e6f0;
 	padding: 5px 10px;
 }
 
@@ -511,13 +537,13 @@ hr {
 
 
 /* PROFILE */
-#profile-page {
+#user-profile-page {
 	color: var(--color-main-dark);
 }
 
 .profile-username,
 .profile-model {
-	margin: 3vh auto;
+	margin: 3vh auto 1vh auto;
 	font-size: 1.5em;
 	font-weight: 600;
 	text-align: center;
@@ -557,6 +583,17 @@ hr {
 	margin: 0 25%;
 }*/
 
+.card {
+	font-size: 1.25em;
+  	box-shadow: 0 4px 8px 0 rgba(231,230,240);
+  	border-radius: 5px;
+  	width: 80%;
+    margin: 2vh auto;
+    min-height: 8vh;
+    align-items: center;
+    background-color: #e7e6f0;
+}
+
 #profile-form {
 	padding: 0.8em 2em 1em 2em;
 }
@@ -582,7 +619,13 @@ hr {
 
 .middle-title {
   flex: none;
-  height: 12vh;
+  height: 13vh;
+}
+
+.middle-title h3 {
+	margin: 0 auto 1vh auto;
+	text-align: center;
+	font-weight: 400;
 }
 
 .down-section {
@@ -594,6 +637,10 @@ hr {
 .icon img {
   height: 1em;
   vertical-align: text-bottom;
+}
+
+hr {
+	border: 1px solid #e7e6f0;
 }
 
 
