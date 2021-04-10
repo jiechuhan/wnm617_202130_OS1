@@ -1,4 +1,4 @@
-/* CSS RESET */
+ /* CSS RESET */
 
 *, *::after, *::before {
 	box-sizing: border-box
@@ -132,7 +132,7 @@ hr {
 }
 
 [data-role="header"] img {
-	width: 30%;
+	width: 15%;
 }
 
 [data-role="footer"] {

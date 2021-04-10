@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Brandy Duran",
+    "username": "user1",
+    "email": "user1@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/727/fff/?text=user1",
+    "date_create": "2020-09-06 05:29:02"
+  },
+  {
+    "id": 2,
+    "name": "Lilia Williams",
+    "username": "user2",
+    "email": "user2@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/783/fff/?text=user2",
+    "date_create": "2020-12-25 08:03:16"
+  },
+  {
+    "id": 3,
+    "name": "Rachel Leonard",
+    "username": "user3",
+    "email": "user3@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/998/fff/?text=user3",
+    "date_create": "2020-07-28 01:25:20"
+  },
+  {
+    "id": 4,
+    "name": "Houston Sharpe",
+    "username": "user4",
+    "email": "user4@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/826/fff/?text=user4",
+    "date_create": "2020-05-08 06:05:23"
+  },
+  {
+    "id": 5,
+    "name": "Donna Nelson",
+    "username": "user5",
+    "email": "user5@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/838/fff/?text=user5",
+    "date_create": "2021-01-01 04:51:19"
+  },
+  {
+    "id": 6,
+    "name": "Meghan Delacruz",
+    "username": "user6",
+    "email": "user6@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/905/fff/?text=user6",
+    "date_create": "2020-02-18 12:55:23"
+  },
+  {
+    "id": 7,
+    "name": "Bowen Fletcher",
+    "username": "user7",
+    "email": "user7@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/784/fff/?text=user7",
+    "date_create": "2020-02-08 01:33:10"
+  },
+  {
+    "id": 8,
+    "name": "Floyd Booth",
+    "username": "user8",
+    "email": "user8@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/902/fff/?text=user8",
+    "date_create": "2020-09-15 06:58:12"
+  },
+  {
+    "id": 9,
+    "name": "Helena Pennington",
+    "username": "user9",
+    "email": "user9@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/850/fff/?text=user9",
+    "date_create": "2021-03-21 09:01:47"
+  },
+  {
+    "id": 10,
+    "name": "Marissa Chavez",
+    "username": "user10",
+    "email": "user10@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/940/fff/?text=user10",
+    "date_create": "2021-03-13 06:32:10"
+  }
+]
