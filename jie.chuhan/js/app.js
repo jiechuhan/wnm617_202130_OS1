@@ -8,6 +8,18 @@ $(()=> {
 
 	$(document)
 
+	.on("pagecontainerbeforeshow", function(event, ui) {
+		console.log(ui.toPage[0].id);
+
+		// PAGE ROUTING
+		switch(ui.toPage[0].id) {
+			case "recent-page": RecentPage(); break;
+			case "list-page": ListPage(); break;
+			case "user-profile-page": UserProfilePage(); break;
+			case "vehicle-profile-page": VehicleProfilePage(); break;
+		}
+	})
+
 	// FORM SUBMITS
 	.on("submit", "#signin-form", function(e){
 		e.preventDefault();
@@ -20,6 +32,10 @@ $(()=> {
 	.on("click", ".js-logout", function(e){
 		sessionStorage.removeItem('userId');
 		checkUserId();
+	})
+	.on("click", ".car-jump", function(e){
+		sessionStorage.carId = $(this).data('id');
+		$.mobile.navigate("#vehicle-profile-page");
 	})
 
 

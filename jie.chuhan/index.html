@@ -17,6 +17,9 @@
 	
 	<script src="lib/js/jquery-2.2.4.min.js"></script>
 
+	<script src="js/functions.js"></script>
+	<script src="js/pages.js"></script>
+	<script src="js/parts.js"></script>
 	<script src="js/signin.js"></script>
 	<script src="js/app.js"></script>
 	
@@ -95,18 +98,18 @@
 					<h3>Please register your account</h3>
 				</div>
 
-				<form action="" id="signin-form" data-ajax="false" class="form" style="padding: 1em">
+				<form action="" id="register-form" data-ajax="false" class="form" style="padding: 1em">
 					<div class="form-control">
-						<label for="signin-username" class="form-label" style="color: #202f40;">Username</label>
-						<input class="form-input" type="text" id="signin-username" data-role="none" style="border: 1px solid #a0bfdd;">
+						<label for="register-username" class="form-label" style="color: #202f40;">Username</label>
+						<input class="form-input" type="text" id="register-username" data-role="none" style="border: 1px solid #a0bfdd;">
 					</div>
 					<div class="form-control">
-						<label for="signin-email" class="form-label" style="color: #202f40;">Email</label>
-						<input class="form-input" type="text" id="signin-email" data-role="none" style="border: 1px solid #a0bfdd;">
+						<label for="register-email" class="form-label" style="color: #202f40;">Email</label>
+						<input class="form-input" type="text" id="register-email" data-role="none" style="border: 1px solid #a0bfdd;">
 					</div>
 					<div class="form-control">
-						<label for="signin-password" class="form-label" style="color: #202f40;">Password</label>
-						<input class="form-input" type="password" id="signin-password" data-role="none" style="border: 1px solid #a0bfdd;">
+						<label for="register-password" class="form-label" style="color: #202f40;">Password</label>
+						<input class="form-input" type="password" id="register-password" data-role="none" style="border: 1px solid #a0bfdd;">
 					</div>
 					<div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
 	 					<a href="#recent-page" class="form-button signin-button" style="background-color: #202f40;">Save</a>
@@ -201,8 +204,10 @@
 
  			<div class="down-section" style="margin-top: 4vh;">
 		 		<div class="overscroll">
+
 					<ul>
-						<li>
+						<div class="carList"></div>
+						<!-- <li>
 							<a href="#vehicle-profile-page" style="display: flex; position: relative;">
 								<img src="img/camry.jpeg">
 								<div class="list-item-text">
@@ -212,106 +217,7 @@
 								</div>
 								<img src="img/like.png" style="width: 2em; position: absolute; right: 7%; top: 30%;">
 							</a>
-						</li>
-						<li>
-							<a href="#vehicle-profile-page" style="display: flex; position: relative;">
-								<img src="img/camry.jpeg">
-								<div class="list-item-text">
-									<h3>Model: <span>Camry</span></h3>
-									<p>Type: <span>Sedan</span></p>
-									<p>Location: <span>Daly City</span></p>
-								</div>
-								<img src="img/like.png" style="width: 2em; position: absolute; right: 7%; top: 30%;">
-							</a>
-						</li>
-						<li>
-							<a href="#vehicle-profile-page" style="display: flex; position: relative;">
-								<img src="img/camry.jpeg">
-								<div class="list-item-text">
-									<h3>Model: <span>Camry</span></h3>
-									<p>Type: <span>Sedan</span></p>
-									<p>Location: <span>Daly City</span></p>
-								</div>
-								<img src="img/like.png" style="width: 2em; position: absolute; right: 7%; top: 30%;">
-							</a>
-						</li>
-						<li>
-							<a href="#vehicle-profile-page" style="display: flex; position: relative;">
-								<img src="img/camry.jpeg">
-								<div class="list-item-text">
-									<h3>Model: <span>Camry</span></h3>
-									<p>Type: <span>Sedan</span></p>
-									<p>Location: <span>Daly City</span></p>
-								</div>
-								<img src="img/like.png" style="width: 2em; position: absolute; right: 7%; top: 30%;">
-							</a>
-						</li>
-						<li>
-							<a href="#vehicle-profile-page" style="display: flex; position: relative;">
-								<img src="img/camry.jpeg">
-								<div class="list-item-text">
-									<h3>Model: <span>Camry</span></h3>
-									<p>Type: <span>Sedan</span></p>
-									<p>Location: <span>Daly City</span></p>
-								</div>
-								<img src="img/like.png" style="width: 2em; position: absolute; right: 7%; top: 30%;">
-							</a>
-						</li>
-						<li>
-							<a href="#vehicle-profile-page" style="display: flex; position: relative;">
-								<img src="img/camry.jpeg">
-								<div class="list-item-text">
-									<h3>Model: <span>Camry</span></h3>
-									<p>Type: <span>Sedan</span></p>
-									<p>Location: <span>Daly City</span></p>
-								</div>
-								<img src="img/like.png" style="width: 2em; position: absolute; right: 7%; top: 30%;">
-							</a>
-						</li>
-						<li>
-							<a href="#vehicle-profile-page" style="display: flex; position: relative;">
-								<img src="img/camry.jpeg">
-								<div class="list-item-text">
-									<h3>Model: <span>Camry</span></h3>
-									<p>Type: <span>Sedan</span></p>
-									<p>Location: <span>Daly City</span></p>
-								</div>
-								<img src="img/like.png" style="width: 2em; position: absolute; right: 7%; top: 30%;">
-							</a>
-						</li>
-						<li>
-							<a href="#vehicle-profile-page" style="display: flex; position: relative;">
-								<img src="img/camry.jpeg">
-								<div class="list-item-text">
-									<h3>Model: <span>Camry</span></h3>
-									<p>Type: <span>Sedan</span></p>
-									<p>Location: <span>Daly City</span></p>
-								</div>
-								<img src="img/like.png" style="width: 2em; position: absolute; right: 7%; top: 30%;">
-							</a>
-						</li>
-						<li>
-							<a href="#vehicle-profile-page" style="display: flex; position: relative;">
-								<img src="img/camry.jpeg">
-								<div class="list-item-text">
-									<h3>Model: <span>Camry</span></h3>
-									<p>Type: <span>Sedan</span></p>
-									<p>Location: <span>Daly City</span></p>
-								</div>
-								<img src="img/like.png" style="width: 2em; position: absolute; right: 7%; top: 30%;">
-							</a>
-						</li>
-						<li>
-							<a href="#vehicle-profile-page" style="display: flex; position: relative;">
-								<img src="img/camry.jpeg">
-								<div class="list-item-text">
-									<h3>Model: <span>Camry</span></h3>
-									<p>Type: <span>Sedan</span></p>
-									<p>Location: <span>Daly City</span></p>
-								</div>
-								<img src="img/like.png" style="width: 2em; position: absolute; right: 7%; top: 30%;">
-							</a>
-						</li>
+						</li> -->
 					</ul>
 	 			</div>
 	 		</div>
@@ -331,9 +237,8 @@
 
 	<!-- USER PROFILE SECTION -->
  	<section data-role="page" id="user-profile-page">
- 		 <header data-role="header" style="height: 40vh; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; background-image: url('img/profile-img.jpeg'); background-size: cover;">
- 			<!-- <h1>Profile</h1> -->
- 			<!-- <img src="img/profile-img.jpeg"> -->
+ 		
+ 		 <header class="header" data-role="header" style="height: 40vh; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; background-size: cover;">
  			<ul>
  				<li class="flex-stretch"></li>
 				<li>
@@ -344,9 +249,10 @@
 			</ul>
  		</header>
 
- 		<div data-role="main" class="display-flex flex-vertical">
+ 	<!-- 	<div class="profile"></div> -->
 
- 			<div class="middle-title">
+ 		<div data-role="main" class="display-flex flex-vertical profile">
+ 			<!-- <div class="middle-title">
 				<div class="profile-username">Jane Smiths</div>
 				<h3>j.smiths@gmail.com</h3>
 
@@ -373,11 +279,11 @@
 		 				<a href="#profile-page" class="form-button signin-button" style="float: none; margin: 0 auto;">Edit</a>
 		 			</div>
 	 			</div>
-	 		</div>
+	 		</div> -->
  		</div>
 
  		<div class="modal" id="edit-profile">
-			<div class="modal-drawer right">
+			<!-- <div class="modal-drawer right">
 				<div class="modal-head display-flex">
 					<div class="flex-none">Edit</div>
 					<div class="flex-stretch"></div>
@@ -389,20 +295,20 @@
 					<div class="overscroll">
 						<form action="" id="profile-form" data-ajax="false" class="form" style="padding: 0;">
 		 					<div class="form-control">
-		 						<label for="signin-username" class="form-label">First Name</label>
-		 						<input class="form-input" type="text" id="signin-username" data-role="none" placeholder="Jane">
+		 						<label for="profile-firstname" class="form-label">First Name</label>
+		 						<input class="form-input" type="text" id="profile-firstname" data-role="none" placeholder="Jane">
 		 					</div>
 		 					<div class="form-control">
-		 						<label for="signin-username" class="form-label">Last Name</label>
-		 						<input class="form-input" type="text" id="signin-username" data-role="none" placeholder="Smiths">
+		 						<label for="profile-lastname" class="form-label">Last Name</label>
+		 						<input class="form-input" type="text" id="profile-lastname" data-role="none" placeholder="Smiths">
 		 					</div>
 		 					<div class="form-control">
-		 						<label for="signin-email" class="form-label">Email</label>
-		 						<input class="form-input" type="email" id="signin-email" data-role="none" placeholder="j.smiths@gmail.com">
+		 						<label for="profile-email" class="form-label">Email</label>
+		 						<input class="form-input" type="email" id="profile-email" data-role="none" placeholder="j.smiths@gmail.com">
 		 					</div>
 		 					<div class="form-control">
-		 						<label for="signin-password" class="form-label">Password</label>
-		 						<input class="form-input" type="password" id="signin-password" data-role="none" placeholder="••••">
+		 						<label for="profile-password" class="form-label">Password</label>
+		 						<input class="form-input" type="password" id="profile-password" data-role="none" placeholder="••••">
 		 					</div>
 		 					<div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
 			 					<a href="#profile-page" class="form-button signin-button" style="float: none; margin: 0 auto;" data-deactivate="#edit-profile">Save</a>
@@ -410,7 +316,7 @@
 		 				</form>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 
 
@@ -428,7 +334,7 @@
 
 <!-- VEHICLE PROFILE SECTION -->
  	<section data-role="page" id="vehicle-profile-page">
- 		<header data-role="header" style="height: 40vh; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; background-image: url(img/camry.jpeg); background-size: cover;">
+ 		<header data-role="header" class="header" style="height: 40vh; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; background-size: cover;">
  				<!-- <a href="#" data-rel="back">Back</a> -->
  			<h1>Vehicle Detail</h1>
  			<ul style="z-index: 10000000;">
@@ -441,9 +347,9 @@
 			</ul>
  		</header>
 
- 		<div data-role="main" class="display-flex flex-vertical">
+ 		<div data-role="main" class="display-flex flex-vertical profile">
 
- 			 <div class="middle-title" style="margin-top: 3vh; height: 7vh;">
+ 			 <!-- <div class="middle-title" style="margin-top: 3vh; height: 7vh;">
 				<div class="profile-model" style="">Camry</div>
 				<ul style="position: relative;">
 					<li class="flex-stretch"></li>
@@ -479,7 +385,7 @@
 		 			</div>
 	 			</div>
 	 			
-	 		</div>
+	 		</div> -->
  		</div>
 
  		<div class="modal" id="see-map">
