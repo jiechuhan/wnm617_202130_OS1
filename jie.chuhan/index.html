@@ -20,8 +20,15 @@
 	<script src="js/functions.js"></script>
 	<script src="js/pages.js"></script>
 	<script src="js/parts.js"></script>
+	<script src="js/maps.js"></script>
 	<script src="js/signin.js"></script>
 	<script src="js/app.js"></script>
+
+	<!-- AIzaSyCYE9Fqg83eLXcEZJF7KmC40Sl6DIVvMKA -->
+	<script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYE9Fqg83eLXcEZJF7KmC40Sl6DIVvMKA&libraries=&v=weekly"
+      async
+    ></script>
 	
 	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
 </head>
@@ -138,11 +145,12 @@
 	<!-- MAP SECTION -->
  	<section data-role="page" id="recent-page">
 		<div data-role="main">
-			<div class="map-icon-test icon" style="position: absolute; left: 20vh; top: 45vh; font-size: 2em" data-activate="#recent-test-modal">
+			<div class="map"></div>
+			<!-- <div class="map-icon-test icon" style="position: absolute; left: 20vh; top: 45vh; font-size: 2em" data-activate="#recent-test-modal">
 				<img src="img/location.png" alt="">
-			</div>
+			</div> -->
 
-			<div class="modal" id="recent-test-modal">
+			<!-- <div class="modal" id="recent-test-modal">
 				<div class="modal-popup small" data-deactivate="#recent-test-modal">
 					<div class="modal-body">
 						<div class="card display-number"><p>Toyota</p></div>
@@ -150,7 +158,7 @@
 	 					<div class="card display-number"><p>Daly City</p></div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<footer data-role="footer" data-template="#footer-template"></footer>
  	</section>
@@ -332,7 +340,7 @@
 
 
 
-<!-- VEHICLE PROFILE SECTION -->
+	<!-- VEHICLE PROFILE SECTION -->
  	<section data-role="page" id="vehicle-profile-page">
  		<header data-role="header" class="header" style="height: 40vh; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; background-size: cover;">
  				<!-- <a href="#" data-rel="back">Back</a> -->
@@ -388,17 +396,74 @@
 	 		</div> -->
  		</div>
 
- 		<div class="modal" id="see-map">
+ 		<div class="modal" id="see-map" style="z-index: 100000000;">
 	 			<div class="modal-back" data-deactivate="#see-map"></div>
  				<div class="modal-popup" style="position: relative;">
- 					<div class="map-icon-test" style="position: absolute; left: 10vh; top: 50vh; height: inherit; width: 30px;">
-				<img src="img/location.png" alt="">
-			</div>
- 					<img src="img/map.png" alt="">
-
+ 					<div class="map"></div>
+ 					<!-- <div class="map-icon-test" style="position: absolute; left: 10vh; top: 50vh; height: inherit; width: 30px;">
+						<img src="img/location.png" alt="">
+					</div>
+ 					<img src="img/map.png" alt=""> -->
  				</div>
  				
 	 		</div>
+ 	</section>
+
+
+
+
+
+ 	<!-- VEHICLE EDIT SECTION -->
+ 	<section data-role="page" id="edit-page">
+		<header data-role="header" style="height: 40vh; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; background-image: url(img/camry.jpeg); background-size: cover;">
+			<h1>Vehicle Detail</h1>
+			<ul style="z-index: 10000000;">
+				<li>
+					<a href="#" data-rel="back">
+						<img src="img/back.png" alt="" style="width:  10%; margin-top: 10px;">
+					</a>
+				</li>
+				<li class="flex-stretch"></li>
+			</ul>
+		</header>
+
+ 		<div data-role="main" class="display-flex flex-vertical">
+ 			<div style="margin-bottom: 1vh;"></div>
+
+ 			<div class="overscroll">
+	 			<form action="" id="edit-form" data-ajax="false" class="form">
+					<div class="form-control">
+						<label for="edit-model" class="form-label">Model</label>
+						<input class="form-input" type="text" id="edit-model" data-role="none" placeholder="Camry">
+					</div>
+					<div class="form-control">
+						<label for="edit-make" class="form-label">Make</label>
+						<input class="form-input" type="text" id="edit-make" data-role="none" placeholder="Toyota">
+					</div>
+					<div class="form-control">
+						<label for="edit-vehicle-type" class="form-label">Type</label>
+						<select class="form-input" type="text" id="edit-vehicle-type" data-role="none">
+							<option value="1">Sedan</option>
+							<option value="2">SUV</option>
+							<option value="3">Convertible</option>
+							<option value="3">Pick-up</option>
+						</select>
+					</div>
+					<div class="form-control">
+						<label for="edit-color" class="form-label">Color</label>
+						<input class="form-input" type="text" id="edit-color" data-role="none" placeholder="Color">
+					</div>
+					<div class="form-control">
+						<label for="edit-location" class="form-label">Location</label>
+						<input class="form-input" type="text" id="edit-location" data-role="none" placeholder="Daly City">
+					</div>
+				
+	 				<div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
+		 				<a href="#" data-rel="back" class="form-button signin-button" style="float: none; margin: 0 auto;">Save</a>
+		 			</div>
+		 		</form>
+		 	</div>
+ 		</div>
  	</section>
 
 
@@ -416,7 +481,7 @@
 			<h1>Vehicle Detail</h1>
 			<ul style="z-index: 10000000;">
 				<li>
-					<a href="#" data-rel="back">
+					<a href="#" data-rel="back" style="text-align: left;">
 						<img src="img/back.png" alt="" style="width:  10%; margin-top: 10px;">
 					</a>
 				</li>
@@ -425,19 +490,20 @@
 		</header>
 
  		<div data-role="main">
+ 			<div style="margin-bottom: 1vh;"></div>
  			<div class="overscroll">
-	 			<form action="" id="profile-form" data-ajax="false" class="form">
+	 			<form action="" id="add-new-form" data-ajax="false" class="form">
 					<div class="form-control">
-						<label for="model" class="form-label">Model</label>
-						<input class="form-input" type="text" id="model" data-role="none" placeholder="Camry">
+						<label for="new-model" class="form-label">Model</label>
+						<input class="form-input" type="text" id="new-model" data-role="none" placeholder="Model">
 					</div>
 					<div class="form-control">
-						<label for="make" class="form-label">Make</label>
-						<input class="form-input" type="text" id="make" data-role="none" placeholder="Toyota">
+						<label for="new-make" class="form-label">Make</label>
+						<input class="form-input" type="text" id="new-make" data-role="none" placeholder="Make">
 					</div>
 					<div class="form-control">
-						<label for="vehicle-type" class="form-label">Type</label>
-						<select class="form-input" type="text" id="vehicle-type" data-role="none">
+						<label for="new-vehicle-type" class="form-label">Type</label>
+						<select class="form-input" type="text" id="new-vehicle-type" data-role="none">
 							<option value="1">Sedan</option>
 							<option value="2">SUV</option>
 							<option value="3">Convertible</option>
@@ -445,8 +511,12 @@
 						</select>
 					</div>
 					<div class="form-control">
-						<label for="locatioin" class="form-label">Location</label>
-						<input class="form-input" type="text" id="locatioin" data-role="none" placeholder="Daly City">
+						<label for="new-color" class="form-label">Color</label>
+						<input class="form-input" type="text" id="new-color" data-role="none" placeholder="Color">
+					</div>
+					<div class="form-control">
+						<label for="new-location" class="form-label">Location</label>
+						<input class="form-input" type="text" id="new-location" data-role="none" placeholder="Location">
 					</div>
 				
 	 				<div class="form-control" style="overflow: hidden; margin: 1.5em 0;">

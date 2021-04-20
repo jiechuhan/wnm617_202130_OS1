@@ -1,4 +1,20 @@
 const RecentPage = async () => {
+	
+	let locations = await query({
+		type: "recent_locations",
+		params: [sessionStorage.userId]
+	});
+	console.log(locations.result);
+
+	let valid_cars = locations.result.reduce((r, o) => {
+		console.log(o.icon);
+		o.icon = o.img;
+		if(o.lat && o.lng) r.push(o);
+		return r;
+	}, []);
+
+	let map_el = await makeMap("#recent-page .map");
+	makeMarkers(map_el, valid_cars);
 
 }
 
@@ -10,9 +26,7 @@ const ListPage = async () => {
 	});
 	console.log(cars);
 
-	car_template = cars.result.length ? makeCarList(cars.result) : `<div class="car">No animals yet. Try adding some<div>`
-
-
+	car_template = cars.result.length ? makeCarList(cars.result) : `<div class="car" style="padding-left: 5%;">No Cars yet. Try adding some<div>`
 
 	$("#list-page .carList").html(car_template);
 }
@@ -29,15 +43,42 @@ const UserProfilePage = async () => {
 }
 
 const VehicleProfilePage = async () => {
-	let r = await query({
+	// let r = await 
+	query({
 		type:'car_id',
       	params:[sessionStorage.carId]
-	})
-	console.log(r);
+	}).then (r=> {
+		console.log(r);
 
-	let car = r.result[0];
-	console.log(car);
+		let car = r.result[0];
+		console.log(car);
 
-	$("#vehicle-profile-page .header").css({backgroundImage:`url(${car.img})`});
-	$("#vehicle-profile-page .profile").html(CarProfilePage(car));
+		$("#vehicle-profile-page .header").css({backgroundImage:`url(${car.img})`});
+		$("#vehicle-profile-page .profile").html(CarProfilePage(car));
+	});
+	
+	query({
+		type:'locations_by_car_id',
+      	params:[sessionStorage.carId]
+	}).then ( async	(r)=> {
+		console.log(r.result);
+		let map_el = await makeMap("#vehicle-profile-page .map");
+      	makeMarkers(map_el,r.result)
+	});
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

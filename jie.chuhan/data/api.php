@@ -53,20 +53,33 @@
  		case "cars_all":
  			return makeQuery($c,"SELECT * FROM `track_202130_cars`", $p);
  		case "locations_all":
- 			return makeQuery($c,"SELECT * FROM `track_2021_locations`", $p);
+ 			return makeQuery($c,"SELECT * FROM `track_202130_locations`", $p);
 
 
  		case "car_id":
  			return makeQuery($c,"SELECT * FROM `track_202130_cars` WHERE id=?" , $p);
  		case "location_id":
- 			return makeQuery($c,"SELECT * FROM `track_2021_locations` WHERE id=?" , $p);
+ 			return makeQuery($c,"SELECT * FROM `track_202130_locations` WHERE id=?" , $p);
 
  		case "user_by_id":
  			return makeQuery($c,"SELECT * FROM `track_202130_users` WHERE id=?" , $p);
  		case "cars_by_user_id":
  			return makeQuery($c,"SELECT * FROM `track_202130_cars` WHERE user_id=?" , $p);
  		case "locations_by_car_id":
- 			return makeQuery($c,"SELECT * FROM `track_2021_locatioins` WHERE car_id=?" , $p);
+ 			return makeQuery($c,"SELECT * FROM `track_202130_locations` WHERE car_id=?" , $p);
+
+ 		case "recent_locations":
+ 			return makeQuery($c,"
+ 				SELECT * 
+ 				FROM `track_202130_cars` a
+ 				RIGHT JOIN (
+ 					SELECT * FROM `track_202130_locations`
+ 					ORDER BY `date_create` DESC
+ 				) l
+ 				ON a.id = l.car_id
+ 				WHERE a.user_id=?
+ 				GROUP BY l.car_id
+ 				", $p);
 
 
  		case "check_signin":

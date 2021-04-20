@@ -15,7 +15,7 @@ const makeCarList = templater(o=> `
 
 const makeUserProfile = o => `
 	<div class="middle-title">
-		<div class="profile-username">${o.name}</div>
+		<div class="profile-username">${o.firstname} ${o.lastname}</div>
 		<h3>${o.email}</h3>
 
 		<hr>
@@ -34,7 +34,7 @@ const makeUserProfile = o => `
  				</div>
 			</div>
 
-	 		<div class="card display-number"><p>${o.name}</p></div>
+	 		<div class="card display-number"><p>${o.firstname} ${o.lastname} </p></div>
 	 		<div class="card display-number"><p>${o.email}</p></div>
 
  				<div class="form-control" style="overflow: hidden; margin: 1.5em 0;" data-activate="#edit-profile">
@@ -60,11 +60,11 @@ const makeUserInfo = o => `
 				<form action="" id="profile-form" data-ajax="false" class="form" style="padding: 0;">
 					<div class="form-control">
 						<label for="profile-firstname" class="form-label">First Name</label>
-						<input class="form-input" type="text" id="profile-firstname" data-role="none" placeholder="${o.name}">
+						<input class="form-input" type="text" id="profile-firstname" data-role="none" placeholder="${o.firstname}">
 					</div>
 					<div class="form-control">
 						<label for="profile-lastname" class="form-label">Last Name</label>
-						<input class="form-input" type="text" id="profile-lastname" data-role="none" placeholder="${o.name}">
+						<input class="form-input" type="text" id="profile-lastname" data-role="none" placeholder="${o.lastname}">
 					</div>
 					<div class="form-control">
 						<label for="profile-email" class="form-label">Email</label>
@@ -72,7 +72,7 @@ const makeUserInfo = o => `
 					</div>
 					<div class="form-control">
 						<label for="profile-password" class="form-label">Password</label>
-						<input class="form-input" type="password" id="profile-password" data-role="none" placeholder="${o.password}">
+						<input class="form-input" type="password" id="profile-password" data-role="none" placeholder="Change your password here">
 					</div>
 					<div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
  					<a href="#profile-page" class="form-button signin-button" style="float: none; margin: 0 auto;" data-deactivate="#edit-profile">Save</a>
@@ -91,7 +91,6 @@ const CarProfilePage = templater(o=> `
 			<li class="flex-none" style="text-align: right; padding-right: 1em;">
 				<img src="img/trash.png" alt="" style="width: 2em;">
 			</li>
-			
 		</ul>
 		<hr>
 	</div>
@@ -104,22 +103,21 @@ const CarProfilePage = templater(o=> `
 					<img src="img/like.png" alt="" style="height: 2em; padding: 0 1em; align-self: center;">
 				</li>
 				<li style="height: 5vh;">
-					<a href="#add-new-page">
+					<a href="#edit-page">
 						<img src="img/edit.png" alt="">
 					</a>
 				</li>
 			</ul>
 			</div>
 
-			<div class="card display-number"><p>${o.make}</p></div>
-			<div class="card display-number"><p>${o.type}</p></div>
-			<div class="card display-number"><p>Daly City</p></div>
+			<div class="card display-number"><p>Make: ${o.make}</p></div>
+			<div class="card display-number"><p>Type: ${o.type}</p></div>
+			<div class="card display-number"><p>Color: ${o.color}</p></div>
 
 			<div class="form-control" style="overflow: hidden; margin: 1.5em 0;" data-activate="#see-map">
-				<a href="#profile-page" class="form-button signin-button" style="float: none; margin: 0 auto; padding: 0.5em 1em; text-align: center; width: 50%;">Click to see map</a>
+				<a href="#" class="form-button signin-button" style="float: none; margin: 0 auto; padding: 0.5em 1em; text-align: center; width: 50%;">Click to see map</a>
 			</div>
 		</div>
-		
 	</div>
 `);
 

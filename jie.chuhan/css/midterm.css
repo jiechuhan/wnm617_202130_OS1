@@ -203,7 +203,8 @@ hr {
 }
 
 #vehicle-profile-page [data-role="header"] ul li a,
-#add-new-page [data-role="header"] ul li a {
+#add-new-page,
+#edit-page [data-role="header"] ul li a {
 	text-align: left;
 }
 
@@ -289,6 +290,7 @@ hr {
 .modal-popup {
   position: absolute;
   width: 80%;
+  height: 80%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, calc(-50% + 5vh));
@@ -459,11 +461,19 @@ hr {
 	background-color: var(--color-main-light);
 }
 
-#recent-page [data-role="main"] {
+/*#recent-page [data-role="main"] {
   background-image: url('../img/map.png');
   background-position: center;
   background-color: var(--color-main-light-light);
   background-size: cover;
+}*/
+
+.map {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
 
@@ -594,7 +604,9 @@ hr {
     background-color: #e7e6f0;
 }
 
-#profile-form {
+#profile-form,
+#edit-form,
+#add-new-form {
 	padding: 0.8em 2em 1em 2em;
 }
 
