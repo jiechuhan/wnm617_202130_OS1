@@ -38,7 +38,7 @@ const checkSigninForm = async () => {
 
 // Change page base on data
 const checkUserId = () => {
-	let p = ["#signin-page", "#signup-page", ""];
+	let p = ["#signin-page", "#register-page", "register-second-page"];
 
 	if(sessionStorage.userId === undefined) {
 		// not logged in and not on any of page, then navigate 

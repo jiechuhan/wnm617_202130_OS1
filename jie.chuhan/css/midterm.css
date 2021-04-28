@@ -203,8 +203,11 @@ hr {
 }
 
 #vehicle-profile-page [data-role="header"] ul li a,
-#add-new-page,
-#edit-page [data-role="header"] ul li a {
+#add-new-page [data-role="header"] ul li a,
+#vehicle-edit-page [data-role="header"] ul li a
+/*#choose-car-page [data-role="header"] ul li a,
+#choose-location-page [data-role="header"] ul li a,
+#location-description-page [data-role="header"] ul li a*/{
 	text-align: left;
 }
 
@@ -363,11 +366,6 @@ hr {
 
 
 
-
-
-
-
-
 /* SIGN IN*/
 .logo {
 	padding: 4%;
@@ -426,6 +424,34 @@ hr {
 	color: var(--color-main-dark);
 }
 
+#signin-form label,
+#add-new-form label,
+#profile-form label,
+#password-form label,
+#location-description-form label {
+	color: var(--color-main-dark) !important;
+}
+
+#register-form,
+#register-second-form {
+	padding: 1em;
+}
+
+#register-form label,
+#register-second-form label {
+	color: #202f40;
+}
+
+#register-form input,
+#register-second-form input {
+	border: 1px solid #a0bfdd;
+}
+
+#register-form .form-button,
+#register-second-form .form-button {
+	background-color: #202f40;
+}
+
 .signin-button {
 	float: right;
 	color: var(--color-white);
@@ -475,6 +501,25 @@ hr {
 	width: 100%;
 	height: 100%;
 }
+
+.recent-card {
+	width: 80% !important;
+	top: 2em;
+	left: 10%;
+}
+
+.car-jump div {
+	pointer-events: none;
+	/*color: var(--color-main-medium);*/
+}
+
+.car-image-thumb img {
+  width:6em;
+  height:6em;
+  vertical-align: middle;
+  margin-top:2em;
+}
+
 
 
 
@@ -605,7 +650,7 @@ hr {
 }
 
 #profile-form,
-#edit-form,
+#car-edit-form,
 #add-new-form {
 	padding: 0.8em 2em 1em 2em;
 }
@@ -631,7 +676,8 @@ hr {
 
 .middle-title {
   flex: none;
-  height: 13vh;
+  height: 15vh;
+  background-color: var(--color-white);
 }
 
 .middle-title h3 {
@@ -653,6 +699,14 @@ hr {
 
 hr {
 	border: 1px solid #e7e6f0;
+}
+
+
+
+
+/* ADD NEW */
+textarea#location-description {
+	height: 200px !important;
 }
 
 

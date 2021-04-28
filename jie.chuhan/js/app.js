@@ -11,14 +11,19 @@ $(()=> {
 	.on("pagecontainerbeforeshow", function(event, ui) {
 		console.log(ui.toPage[0].id);
 
+		$(".active").removeClass("active");
+
 		// PAGE ROUTING
 		switch(ui.toPage[0].id) {
 			case "recent-page": RecentPage(); break;
 			case "list-page": ListPage(); break;
 			case "user-profile-page": UserProfilePage(); break;
 			case "vehicle-profile-page": VehicleProfilePage(); break;
+			case "vehicle-edit-page": VehicleEditPage(); break;
+			case "choose-location-page": ChooseLocationPage(); break;
 		}
 	})
+
 
 	// FORM SUBMITS
 	.on("submit", "#signin-form", function(e){
@@ -26,6 +31,16 @@ $(()=> {
 		// console.log(e);
 		checkSigninForm();
 	})
+
+	.on("submit","#register-form",function(e){
+    	e.preventDefault();
+    	$.mobile.navigate("#register-second-page");
+   })
+
+    .on("submit","#register-second-form",function(e){
+    	e.preventDefault();
+    	$.mobile.navigate("#recent-page");
+    })
 
 
 	// ANCHOR CLICKS
@@ -54,10 +69,7 @@ $(()=> {
 	})
 
 
-
-
-
-
+	// MAKE TEMPLATE
 	$("[data-template]").each(function() {
 		let id = $(this).data("template");
 		let template = $(id).html();

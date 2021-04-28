@@ -6,6 +6,7 @@
 	<title>Vehicle Tracking App</title>
 
 	<link rel="stylesheet" href="lib/css/jquery.mobile.structure-1.4.5.min.css">
+	<link rel="stylesheet" href="css/app.css">
 	<link rel="stylesheet" href="css/midterm.css">
 	<link rel="shortcut icon" type="image/jpg" href="img/logo-c.png"/>
 
@@ -63,7 +64,6 @@
 						<input class="form-input" type="password" id="signin-password" data-role="none">
 					</div>
 					<div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
- 					<!-- <a href="#recent-page" class="form-button signin-button">Sign In</a> -->
  						<input type="submit" class="form-button signin-button" value="Sign In" data-role="none">
  						<label class="keep">Keep me sign in
 							<input type="checkbox">
@@ -105,22 +105,22 @@
 					<h3>Please register your account</h3>
 				</div>
 
-				<form action="" id="register-form" data-ajax="false" class="form" style="padding: 1em">
+				<form action="" id="register-form" data-ajax="false" class="form">
 					<div class="form-control">
-						<label for="register-username" class="form-label" style="color: #202f40;">Username</label>
-						<input class="form-input" type="text" id="register-username" data-role="none" style="border: 1px solid #a0bfdd;">
+						<label for="register-email" class="form-label">Email</label>
+						<input class="form-input" type="text" id="register-email" data-role="none">
 					</div>
 					<div class="form-control">
-						<label for="register-email" class="form-label" style="color: #202f40;">Email</label>
-						<input class="form-input" type="text" id="register-email" data-role="none" style="border: 1px solid #a0bfdd;">
+						<label for="register-password" class="form-label">Password</label>
+						<input class="form-input" type="password" id="register-password" data-role="none">
 					</div>
 					<div class="form-control">
-						<label for="register-password" class="form-label" style="color: #202f40;">Password</label>
-						<input class="form-input" type="password" id="register-password" data-role="none" style="border: 1px solid #a0bfdd;">
+						<label for="register-confirm" class="form-label">Confirm Password</label>
+						<input class="form-input" type="password" id="register-confirm" data-role="none">
 					</div>
 					<div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
-	 					<a href="#recent-page" class="form-button signin-button" style="background-color: #202f40;">Save</a>
-	 					<label class="keep" style="color: #202f40;">Keep me sign in
+	 					<input type="submit" class="form-button signin-button" value="Sign Up" data-role="none">
+	 					<label class="keep">Keep me sign in
 							<input type="checkbox">
 						</label>
 	 				</div>
@@ -129,6 +129,47 @@
 				<div class="register-register">
 					<p>Already have an account? <a href="#signin-page">Sign in!</a></p>
 				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<section data-role="page" id="register-second-page">
+
+		<div id="triangle-left-register"></div>
+		
+		<div data-role="main" class="display-flex flex-vertical">
+			<div class="logo">
+				<img src="img/logo-c.png" alt="">
+			</div>
+
+			<div class="flex-stretch"></div>
+
+			<div class="flex-none">
+				<div class="welcome-register">
+					<h1>Hello!</h1>
+					<h3>Please register your account</h3>
+				</div>
+
+				<form action="" id="register-second-form" data-ajax="false" class="form">
+					<div class="form-control">
+						<label for="register-second-username" class="form-label">Username</label>
+						<input class="form-input" type="text" id="register-second-username" data-role="none" placeholder="Username">
+					</div>
+					<div class="form-control">
+						<label for="register-second-firstname" class="form-label">First Name</label>
+						<input class="form-input" type="text" id="register-second-firstname" data-role="none" placeholder="First Name">
+					</div>
+					<div class="form-control">
+						<label for="register-second-lastname" class="form-label">Last Name</label>
+						<input class="form-input" type="text" id="register-second-lastname" data-role="none" placeholder="Last Name">
+					</div>
+					
+					<div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
+	 					<input type="submit" class="form-button signin-button" value="Finish Up" data-role="none">
+	 				</div>
+				</form>
 			</div>
 		</div>
 	</section>
@@ -146,6 +187,14 @@
  	<section data-role="page" id="recent-page">
 		<div data-role="main">
 			<div class="map"></div>
+			<div class="floater bottom right" style="padding: 1em;">
+				<a href="#choose-car-page" class="circle-button">&plus;</a>
+			</div>
+			<div class="modal" id="recent-drawer">
+				<div class="modal-drawer modal-card top" style="width: 80% !important; top: 2em; left: 10%; height: initial;">
+					<div class="modal-body"></div>
+				</div>
+			</div>
 			<!-- <div class="map-icon-test icon" style="position: absolute; left: 20vh; top: 45vh; font-size: 2em" data-activate="#recent-test-modal">
 				<img src="img/location.png" alt="">
 			</div> -->
@@ -290,7 +339,7 @@
 	 		</div> -->
  		</div>
 
- 		<div class="modal" id="edit-profile">
+ 		<div class="modal profile-modal" id="edit-profile">
 			<!-- <div class="modal-drawer right">
 				<div class="modal-head display-flex">
 					<div class="flex-none">Edit</div>
@@ -325,6 +374,9 @@
 					</div>
 				</div>
 			</div> -->
+		</div>
+
+		<div class="modal password-modal" id="edit-password">
 		</div>
 
 
@@ -400,6 +452,9 @@
 	 			<div class="modal-back" data-deactivate="#see-map"></div>
  				<div class="modal-popup" style="position: relative;">
  					<div class="map"></div>
+		 			<div class="floater bottom right" style="padding: 1em;">
+						<a href="#choose-location-page" class="circle-button" style="border-radius: 50%;">&plus;</a>
+					</div>
  					<!-- <div class="map-icon-test" style="position: absolute; left: 10vh; top: 50vh; height: inherit; width: 30px;">
 						<img src="img/location.png" alt="">
 					</div>
@@ -413,10 +468,15 @@
 
 
 
+
+
+
+
+
  	<!-- VEHICLE EDIT SECTION -->
- 	<section data-role="page" id="edit-page">
+ 	<section data-role="page" id="vehicle-edit-page">
 		<header data-role="header" style="height: 40vh; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; background-image: url(img/camry.jpeg); background-size: cover;">
-			<h1>Vehicle Detail</h1>
+			<h1>Edit Vehicle Detail</h1>
 			<ul style="z-index: 10000000;">
 				<li>
 					<a href="#" data-rel="back">
@@ -431,8 +491,8 @@
  			<div style="margin-bottom: 1vh;"></div>
 
  			<div class="overscroll">
-	 			<form action="" id="edit-form" data-ajax="false" class="form">
-					<div class="form-control">
+	 			<form action="" id="car-edit-form" data-ajax="false" class="form">
+					<!-- <div class="form-control">
 						<label for="edit-model" class="form-label">Model</label>
 						<input class="form-input" type="text" id="edit-model" data-role="none" placeholder="Camry">
 					</div>
@@ -460,7 +520,7 @@
 				
 	 				<div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
 		 				<a href="#" data-rel="back" class="form-button signin-button" style="float: none; margin: 0 auto;">Save</a>
-		 			</div>
+		 			</div> -->
 		 		</form>
 		 	</div>
  		</div>
@@ -530,6 +590,118 @@
 
 
 
+
+
+
+
+
+<!-- ADD NEW FROM MAP PAGE -->
+	<section data-role="page" id="choose-car-page">
+		<header data-role="header" style="height: 12vh;">
+			<h1>Choose Vehicle</h1>
+ 			<ul style="z-index: 10000000000;">
+ 				<li>
+ 					<a href="#" data-rel="back" style="text-align: left;">
+						<!-- <img src="img/cancel.png" alt="" style="margin-top: 10px;"> -->
+						Cancel
+					</a>
+ 				</li>
+ 				<li class="flex-stretch"></li>
+				<li>
+					<a href="#choose-location-page">
+						<!-- <img src="img/next.png" alt="" style="margin-top: 10px;"> -->
+						Next
+					</a>
+				</li>
+			</ul>
+		</header>
+
+ 		<div data-role="main" class="display-flex flex-vertical">
+ 			<div style="margin-bottom: 1vh;"></div>
+
+ 			<div class="overscroll">
+	 			<form action="" id="edit-form" data-ajax="false" class="form">
+					<div>Create New Vehicle</div>
+					<div>Choose Vehicle</div>
+		 		</form>
+		 	</div>
+ 		</div>
+ 	</section>
+
+
+
+
+
+ 	<section data-role="page" id="choose-location-page">
+		 <header class="header" data-role="header" style="height: 12vh;">
+		 	<h1>Choose Location</h1>
+ 			<ul style="z-index: 10000000000;">
+ 				<li>
+ 					<a href="#" data-rel="back" style="text-align: left">
+						<!-- <img src="img/back.png" alt="" style="margin-top: 10px;"> -->
+						Back
+					</a>
+ 				</li>
+ 				<li class="flex-stretch"></li>
+				<li>
+					<a href="#location-description-page">
+						<!-- <img src="img/next.png" alt="" style="margin-top: 10px;"> -->
+						Next
+					</a>
+				</li>
+			</ul>
+ 		</header>
+
+ 		<div data-role="main" class="display-flex flex-vertical">
+ 			<div class="map"></div>
+ 		</div>
+ 	</section>
+
+
+
+
+
+ 	<section data-role="page" id="location-description-page">
+		<header data-role="header" style="height: 12vh;">
+			<h1>Describe Vehicle</h1>
+ 			<ul style="z-index: 10000000000;">
+ 				<li>
+ 					<a href="#" data-rel="back" style="text-align: left">
+						<!-- <img src="img/back.png" alt="" style="margin-top: 10px;"> -->
+						Back
+					</a>
+ 				</li>
+ 				<li class="flex-stretch"></li>
+				<li>
+					<a href="#" class="js-add-location">
+						<!-- <img src="img/save.png" alt="" style="margin-top: 10px;"> -->
+						Save
+					</a>
+				</li>
+			</ul>
+		</header>
+
+ 		<div data-role="main" class="display-flex flex-vertical">
+ 			<div class="overscroll">
+ 				<form action="" style="padding: 1em;" id="location-description-form">
+ 					<label for="location-description" class="form-label">Location Description</label>
+ 					<div class="form-control">
+ 						<textarea name="location-description" id="location-description" rows="10" class="form-input" data-role="none"></textarea>
+ 					</div>
+ 				</form>
+ 			</div>
+ 		</div>
+ 	</section>
+
+
+
+
+
+
+
+
+
+
 	<script type="text/template" id="footer-template">
 		<ul>
 			<li><a href="#recent-page">
@@ -546,12 +718,6 @@
 			</li>
 		</ul>
 	</script>
-
-
-
-
-
-
 
 </body>
 </html>

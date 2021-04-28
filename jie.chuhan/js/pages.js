@@ -16,6 +16,28 @@ const RecentPage = async () => {
 	let map_el = await makeMap("#recent-page .map");
 	makeMarkers(map_el, valid_cars);
 
+	map_el.data("markers").forEach((o, i) => {
+		// console.log(o, i);
+		o.addListener("click", function() {
+			console.log(o, i)
+			
+			// SIMPLE EXAMPLE
+			// sessionStorage.carId = valid_cars[i].car_id;
+			// $.mobile.navigate("#vehicle-profile-page")
+
+			// INFOWINDOW EXAMPLE
+			// map_el.data("infoWindow")
+			// 	.open(map_el.data("map"), o)
+			// map_el.data("infoWindow")
+			// 	.setContent(makeCarPopup(valid_cars[i]))
+
+			// ACTIVATE EXAMPLE
+			$("#recent-drawer").addClass("active")
+				.find(".modal-body")
+				.html(makeCarPopup(valid_cars[i]))
+		})
+	})
+
 }
 
 const ListPage = async () => {
@@ -26,7 +48,7 @@ const ListPage = async () => {
 	});
 	console.log(cars);
 
-	car_template = cars.result.length ? makeCarList(cars.result) : `<div class="car" style="padding-left: 5%;">No Cars yet. Try adding some<div>`
+	car_template = cars.result.length ? makeCarList(cars.result) : `<div class="car" style="padding-left: 5%;">No cars yet. Try adding some cars.<div>`
 
 	$("#list-page .carList").html(car_template);
 }
@@ -39,7 +61,10 @@ const UserProfilePage = async () => {
 	console.log(user.result[0].img);
 	$("#user-profile-page .header").css({backgroundImage:`url(${user.result[0].img})`});
 	$("#user-profile-page .profile").html(makeUserProfile(user.result[0]));
-	$("#user-profile-page .modal").html(makeUserInfo(user.result[0]));
+	$("#user-profile-page .profile-modal").html(makeUserInfo(user.result[0]));
+	$("#profile-form").html(makeUserProfileUpdateForm(user.result[0]));
+	$("#user-profile-page .password-modal").html(makeUserPassword(user.result[0]));
+	$("#password-form").html(makeUserPasswordUpdateForm(user.result[0]));
 }
 
 const VehicleProfilePage = async () => {
@@ -67,6 +92,23 @@ const VehicleProfilePage = async () => {
 	});
 }
 
+const VehicleEditPage = async () => {
+	let car = await query({
+		type: "car_id",
+		params: [sessionStorage.carId]
+	});
+
+	console.log(car.result);
+	$("#car-edit-form")
+		.html(makeAnimalProfileUpdateForm(car.result[0]))
+}
+
+
+
+const ChooseLocationPage = async () => {
+	let map_el = await makeMap("#choose-location-page .map");
+    makeMarkers(map_el,[]);
+}
 
 
 

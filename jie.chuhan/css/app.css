@@ -82,44 +82,44 @@ a:hover {
 
 /* PAGE ELEMENTS */
 [data-role="page"].ui-page-active {
-   display: flex;
-   flex-direction: column;
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 [data-role="main"] {
-   flex: 1 1 100%;
-   overflow: hidden;
-   position: relative;
+  flex: 1 1 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 [data-role="footer"],
 [data-role="header"] {
-   flex: none;
-   height: var(--header-height);
-   line-height: var(--header-height);
-   border-width: 0;
-   background-color: var(--color-white);
-   box-shadow: 0 0 5px rgba(0,0,0,0.2);
-   position: relative;
-   overflow: hidden;
+  flex: none;
+  height: var(--header-height);
+  line-height: var(--header-height);
+  border-width: 0;
+  background-color: var(--color-white);
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
 }
 
 .ui-header .ui-title {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   text-align: center;
-   margin: 0;
-   font-size: 1rem;
-   padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin: 0;
+  font-size: 1rem;
+  padding: 0;
 }
 
 
@@ -165,43 +165,43 @@ a:hover {
 
 /* FORM ELEMENTS */
 .form-control {
-    margin: 1em 0;
+  margin: 1em 0;
 }
 
 .ui-mobile .form-label {
-    margin: 1em 0;
-    font-size: 0.7em;
-    color: var(--color-neutral-medium);
+  margin: 1em 0;
+  font-size: 0.7em;
+  color: var(--color-neutral-medium);
 }
 
 .form-input {
-    width: 100%;
-    display: inline-block;
-    border: 1px solid var(--color-neutral-medium);
-    margin: 0;
-    padding: 0.5em 1em;
-    border-radius: 0.3em;
-    outline: 0;
-    font: inherit;
+  width: 100%;
+  display: inline-block;
+  border: 1px solid var(--color-neutral-medium);
+  margin: 0;
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+  outline: 0;
+  font: inherit;
 }
 
 .form-button {
-    margin: 0;
-    padding: 0.5em 1em;
-    border-radius: 0.3em;
-    border-width: 0;
-    background-color: var(--color-neutral-light);
-    outline: 0;
-    width: 100%;
-    display: inline-block;
-    font: inherit;
-    text-align: center;
-    cursor: pointer;
+  margin: 0;
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+  border-width: 0;
+  background-color: var(--color-neutral-light);
+  outline: 0;
+  width: 100%;
+  display: inline-block;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
 }
 
 .form-button:hover {
-   text-decoration: none;
-   background-color: var(--color-neutral-medium);
+  text-decoration: none;
+  background-color: var(--color-neutral-medium);
 }
 
 
@@ -237,6 +237,7 @@ a:hover {
 }
 
 
+
 .modal-popup {
   position: absolute;
   width: 80%;
@@ -256,6 +257,15 @@ a:hover {
 .modal-popup.small {
   width: initial;
 }
+
+.modal-popup :first-child {
+  border-radius: 5px 5px 0 0;
+}
+
+.modal-popup :last-child {
+  border-radius: 0 0 5px 5px;
+}
+
 
 
 .modal-drawer {
@@ -289,7 +299,16 @@ a:hover {
   pointer-events: initial;
 }
 
+.modal-darwer .modal-card {
+  padding: 1em;
+  box-shadow: none;
 
+}
+
+.modal-card .modal-body {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border-radius: 1em;
+}
 
 .modal-head,
 .modal-foot {
@@ -305,20 +324,6 @@ a:hover {
   overflow: hidden;
 }
 
-.modal-popup :first-child {
-  border-radius: 5px 5px 0 0;
-}
-
-.modal-popup :last-child {
-  border-radius: 0 0 5px 5px;
-}
-
-
-
-
-
-
-
 
 
 
@@ -330,6 +335,10 @@ a:hover {
   vertical-align: text-bottom;
 }
 
+
+
+
+
 /*  FLOATERS */
 .floater { position: absolute; }
 .floater.right { right: 0; }
@@ -340,6 +349,19 @@ a:hover {
 .floater .icon {
   padding: 1em;
   display: block;
+}
+
+.circle-button {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 50% !important;
+  height: var(--header-height);
+  line-height: var(--header-height);
+  width: var(--header-height);
+  text-align: center;
+  font-size: 2em;
 }
 
 
@@ -357,10 +379,6 @@ a:hover {
   position: relative;
   overflow: hidden;
 }
-
-
-
-
 
 .animal-top,
 #recent-page [data-role="main"] {
