@@ -7,13 +7,13 @@ const makeCarList = templater(o=> `
 				<p>Make: <span>${o.make}</span></p>
 				<p>Type: <span>${o.type}</span></p>
 			</div>
-			<img src="img/like.png" style="width: 2em; position: absolute; right: 7%; top: 30%;">
+			
 		</div>
 	</li>
 `);
 
 
-const makeUserProfile = o => `
+const makeUserProfile = (o, car) => `
 	<div class="middle-title">
 		<div class="profile-username">${o.firstname} ${o.lastname}</div>
 		<h3>${o.email}</h3>
@@ -24,13 +24,14 @@ const makeUserProfile = o => `
 	<div class="down-section">
 		<div class="overscroll">
 			<div class="display-data">
+				<div class="display-text">
+ 					<p>You have total</p>
+ 				</div>
  				<div class="display-number">
- 					<p>230</p>
- 					<p>50</p>
+ 					<p>${car.count}</p>
  				</div>
  				<div class="display-text">
- 					<p>Vehicle</p>
- 					<p>Likes</p>
+ 					<p>Vehicles</p>
  				</div>
 			</div>
 
@@ -110,21 +111,15 @@ const makeUserPassword = o => `
 const CarProfilePage = templater(o=> `
 	<div class="middle-title" style="margin-top: 3vh; height: 8vh;">
 		<div class="profile-model" style="">${o.model}</div>
-		<ul style="position: relative;">
-			<li class="flex-stretch"></li>
-			<li class="flex-none" style="text-align: right; padding-right: 1em;">
-				<img src="img/trash.png" alt="" style="width: 2em;">
-			</li>
-		</ul>
-		<hr>
 	</div>
 
-	<div class="down-section">
+	<div class="down-section" style="border-top: 2px solid #e7e6f0;
+">
 		<div class="overscroll">
 			<div class="display-data">
 				<ul>
 				<li style="height: 5vh;">
-					<img src="img/like.png" alt="" style="height: 2em; padding: 0 1em; align-self: center;">
+					<img src="img/trash.png" alt="" style="height: 2em; padding: 0 1em; align-self: center;">
 				</li>
 				<li style="height: 5vh;">
 					<a href="#vehicle-edit-page">
@@ -172,9 +167,9 @@ const CarProfilePage = templater(o=> `
 
 
 const makeCarPopup = o => `
-	<div class="display-flex car-jump" data-id="${o.car_id ? o.car_id : o.id}">
+	<div class="display-flex " data-deactivate="#recent-drawer" >
 		<div class="flex-none car-image-thumb">
-			<img src="${o.img}" alt="">
+			<img class="car-jump" data-id="${o.car_id ? o.car_id : o.id}" src="${o.img}" alt="">
 		</div>
 
 		<div class="flex-none" style="padding:1em;">
@@ -199,10 +194,19 @@ const FormControlInput = ({namespace,name,displayname,type,placeholder,value}) =
 	`;
 }
 
+const FormControlTextarea = ({namespace,name,displayname,type,placeholder,value}) => {
+   return `<div class="form-control">
+      <label for="${namespace}-${name}" class="form-label">${displayname}</label>
+      <textarea class="form-input" id="${namespace}-${name}" data-role="none" placeholder="${placeholder}" style="height: 200px;">${value}
+      </textarea>
+   </div>`;
+}
+
 const FormControlSelect = ({namespace, name, displayname, type, value}) => {return `
 		<div class="form-control">
 			<label for="${namespace}-${name}" class="form-label">${displayname}</label>
-			<select class="form-input" type="${type}" id="${namespace}-${name}" data-role="none" value="${value}">
+			<select class="form-input" type="${type}" id="${namespace}-${name}" data-role="none">
+				<option value="" disabled selected>Please select your car type</option>
 				<option value="Sedan">Sedan</option>
 				<option value="Suv">SUV</option>
 				<option value="Convertible">Convertible</option>
@@ -212,21 +216,33 @@ const FormControlSelect = ({namespace, name, displayname, type, value}) => {retu
 	`
 }
 
-const FormControlTextarea = ({namespace,name,displayname,type,placeholder,value}) => {
-   return `<div class="form-control">
-      <label for="${namespace}-${name}" class="form-label">${displayname}</label>
-      <textarea class="form-input" id="${namespace}-${name}" data-role="none" placeholder="${placeholder}" style="height: 200px;">${value}
-      </textarea>
+const FormSelectOptions = (options, selected=1) => {
+   return options.reduce((r,o)=>{
+      return r+`<option value="${o.id}" ${o.id === selected ? 'selected':''}>${o.model}</option>`
+   },'');
+}
+
+const FormSelect = (options,id,selected=1) => {
+   return `<div class='form-select'>
+      <select id="${id}">
+         ${FormSelectOptions(options,selected)}
+      </select>
    </div>`;
 }
 
 
 
 
+
+
+
+
+
+
 // MAKE FORMS
-const makeAnimalProfileUpdateForm = o => `
+const makeAnimalProfileUpdateForm = (o, namespace="car-edit") => `
 	${FormControlInput({
-		namespace: "car-edit",
+		namespace: namespace,
 		name: "model",
 		displayname: "Model",
 		type: "text",
@@ -234,7 +250,7 @@ const makeAnimalProfileUpdateForm = o => `
 		value: o.model
 	})}
 	${FormControlInput({
-		namespace: "car-edit",
+		namespace: namespace,
 		name: "make",
 		displayname: "Make",
 		type: "text",
@@ -242,15 +258,14 @@ const makeAnimalProfileUpdateForm = o => `
 		value: o.make
 	})}
 	${FormControlSelect({
-		namespace: "car-edit",
+		namespace: namespace,
 		name: "type",
 		displayname: "Type",
 		type: "text",
-		// placeholder: "Select your car type",
 		value: o.type
 	})}
 	${FormControlInput({
-		namespace: "car-edit",
+		namespace: namespace,
 		name: "color",
 		displayname: "Color",
 		type: "text",
@@ -258,21 +273,22 @@ const makeAnimalProfileUpdateForm = o => `
 		value: o.color
 	})}
 	${FormControlTextarea({
-		namespace: "car-edit",
+		namespace: namespace,
 		name: "description",
 		displayname: "Description",
 		type: "text",
-		placeholder: "Type your car desription",
+		placeholder: "Type your car description",
 		value: o.description
 	})}
-	<div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
-		<a href="#" data-rel="back" class="form-button signin-button" style="float: none; margin: 0 auto;">Save</a>
-	</div>
 `
 
-const makeUserProfileUpdateForm = o => `
+// <div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
+// 	<a href="#" data-rel="back" class="form-button signin-button" style="float: none; margin: 0 auto;">Save</a>
+// </div>
+
+const makeUserProfileUpdateForm = (o, namespace="user-edit") => `
 	${FormControlInput({
-		namespace: "user-edit",
+		namespace: namespace,
 		name: "firstname",
 		displayname: "First Name",
 		type: "text",
@@ -280,7 +296,7 @@ const makeUserProfileUpdateForm = o => `
 		value: o.firstname
 	})}
 	${FormControlInput({
-		namespace: "user-edit",
+		namespace: namespace,
 		name: "lastname",
 		displayname: "Last Name",
 		type: "text",
@@ -288,7 +304,7 @@ const makeUserProfileUpdateForm = o => `
 		value: o.lastname
 	})}
 	${FormControlInput({
-		namespace: "user-edit",
+		namespace: namespace,
 		name: "username",
 		displayname: "Username",
 		type: "text",
@@ -296,21 +312,27 @@ const makeUserProfileUpdateForm = o => `
 		value: o.username
 	})}
 	${FormControlInput({
-		namespace: "user-edit",
+		namespace: namespace,
 		name: "email",
 		displayname: "Email",
 		type: "text",
 		placeholder: "Type your email",
 		value: o.email
 	})}
-	<div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
-		<a href="#" class="form-button signin-button" style="float: none; margin: 0 auto;" data-deactivate="#edit-profile">Save</a>
+	<div class="form-control display-flex" style="overflow: hidden; margin: 1.5em 0;">
+		<div class="flex-stretch"></div>
+		<input type="submit" class="form-button signin-button" data-role="none" data-deactivate="#edit-profile" value="Save">
+		<div class="flex-stretch"></div>
 	</div>
 `
 
+// <div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
+// 		<a href="#" class="form-button signin-button" style="float: none; margin: 0 auto;" data-deactivate="#edit-profile">Save</a>
+// 	</div>
+
 const makeUserPasswordUpdateForm = o => `
 	${FormControlInput({
-	   namespace:"user-password",
+	   namespace:"user-edit",
 	   name:'old-password',
 	   displayname:'Old Password',
 	   type:'password',
@@ -318,7 +340,7 @@ const makeUserPasswordUpdateForm = o => `
 	   value:''
 	})}
 	${FormControlInput({
-	   namespace:"user-password",
+	   namespace:"user-edit",
 	   name:'new-password',
 	   displayname:'New Password',
 	   type:'password',
@@ -326,15 +348,17 @@ const makeUserPasswordUpdateForm = o => `
 	   value:''
 	})}
 	${FormControlInput({
-	   namespace:"user-password",
+	   namespace:"user-edit",
 	   name:'confirm-password',
 	   displayname:'Confirm Password',
 	   type:'password',
 	   placeholder:'Type your new password again',
 	   value:''
 	})}
-	<div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
-		<a href="#" class="form-button signin-button" style="float: none; margin: 0 auto;" data-deactivate="#edit-password">Save</a>
+	<div class="form-control display-flex" style="overflow: hidden; margin: 1.5em 0;">
+		<div class="flex-stretch"></div>
+		<input type="submit" class="form-button signin-button" data-role="none" data-deactivate="#edit-password" value="Save">
+		<div class="flex-stretch"></div>
 	</div>
 `
 

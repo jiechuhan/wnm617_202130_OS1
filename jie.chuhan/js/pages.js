@@ -58,9 +58,17 @@ const UserProfilePage = async () => {
 		type: "user_by_id",
 		params: [sessionStorage.userId]
 	});
-	console.log(user.result[0].img);
+
+	let cars = await query({
+		type: "users_all_cars",
+		params: [sessionStorage.userId]
+	})
+
+	console.log(cars.result[0].count);
+
+	console.log(user.result[0]);
 	$("#user-profile-page .header").css({backgroundImage:`url(${user.result[0].img})`});
-	$("#user-profile-page .profile").html(makeUserProfile(user.result[0]));
+	$("#user-profile-page .profile").html(makeUserProfile(user.result[0], cars.result[0]));
 	$("#user-profile-page .profile-modal").html(makeUserInfo(user.result[0]));
 	$("#profile-form").html(makeUserProfileUpdateForm(user.result[0]));
 	$("#user-profile-page .password-modal").html(makeUserPassword(user.result[0]));
@@ -99,15 +107,54 @@ const VehicleEditPage = async () => {
 	});
 
 	console.log(car.result);
-	$("#car-edit-form")
-		.html(makeAnimalProfileUpdateForm(car.result[0]))
+	// console.log(car.result[0].img);
+	$("#vehicle-edit-page .head-image").css({backgroundImage:`url(${car.result[0].img})`});
+	$("#car-edit-form .form-edit-car")
+		.html(makeAnimalProfileUpdateForm(car.result[0]));
+	$("#car-edit-type").val(car.result[0].type);
 }
 
+const VehicleAddPage = async () => {
 
+	// $("#vehicle-edit-page .head-image").css({backgroundImage:`url(${car.result[0].img})`});
+	$("#add-new-form .form-add-car")
+		.html(
+			makeAnimalProfileUpdateForm({
+				model: "",
+				make: "",
+				type: "",
+				color: "",
+				description: ""
+			}, "car-add")
+		);
+	$("#car-add-description").empty();
+}
+
+const ChooseCarPage = async () => {
+	let d = await query({
+      type:'cars_by_user_id',
+      params:[sessionStorage.userId]
+   });
+	console.log(d);
+
+   $("#location-choose-car")
+      .html(FormSelectOptions(d.result))
+}
 
 const ChooseLocationPage = async () => {
 	let map_el = await makeMap("#choose-location-page .map");
     makeMarkers(map_el,[]);
+
+    map_el.data("map").addListener("click",function(e){
+      console.log(e)
+      $("#location-lat").val(e.latLng.lat())
+      $("#location-lng").val(e.latLng.lng())
+      makeMarkers(map_el,[{
+         lat:e.latLng.lat(),
+         lng:e.latLng.lng(),
+         // icon:
+      }])
+   })
 }
 
 

@@ -20,6 +20,8 @@ $(()=> {
 			case "user-profile-page": UserProfilePage(); break;
 			case "vehicle-profile-page": VehicleProfilePage(); break;
 			case "vehicle-edit-page": VehicleEditPage(); break;
+			case "add-new-page": VehicleAddPage(); break;
+			case "choose-car-page": ChooseCarPage(); break;
 			case "choose-location-page": ChooseLocationPage(); break;
 		}
 	})
@@ -34,13 +36,35 @@ $(()=> {
 
 	.on("submit","#register-form",function(e){
     	e.preventDefault();
+    	checkSignupForm();
     	$.mobile.navigate("#register-second-page");
    })
 
     .on("submit","#register-second-form",function(e){
     	e.preventDefault();
+    	checkSignupSecondForm();
     	$.mobile.navigate("#recent-page");
     })
+    .on("submit","#add-new-form",function(e){
+    	e.preventDefault();
+    	checkCarAddForm();
+    })
+    .on("submit","#car-edit-form",function(e){
+    	e.preventDefault();
+    	checkCarEditForm();
+    })
+    .on("submit","#profile-form",function(e){
+    	e.preventDefault();
+    	checkUserEditForm();
+    })
+    .on("submit","#password-form",function(e){
+    	e.preventDefault();
+    	checkUserPasswordForm();
+    })
+
+
+
+	
 
 
 	// ANCHOR CLICKS
@@ -51,6 +75,17 @@ $(()=> {
 	.on("click", ".car-jump", function(e){
 		sessionStorage.carId = $(this).data('id');
 		$.mobile.navigate("#vehicle-profile-page");
+	})
+	.on("click",".js-choose-car",function(e){
+      $("#location-choose-car")
+         .html(FormSelectOptions([{id:sessionStorage.carId,name:"chosen"}]))
+      $("#location-redirect").val(-2);
+   })
+   .on("click",".js-add-from-recent",function(e){
+      $("#location-redirect").val(-3);
+   })
+	.on("click",".location-add-submit",function(e){
+    	checkLocationAddForm();
 	})
 
 

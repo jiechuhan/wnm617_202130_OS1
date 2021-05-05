@@ -6,7 +6,7 @@
 	<title>Vehicle Tracking App</title>
 
 	<link rel="stylesheet" href="lib/css/jquery.mobile.structure-1.4.5.min.css">
-	<link rel="stylesheet" href="css/app.css">
+	<!-- <link rel="stylesheet" href="css/app.css"> -->
 	<link rel="stylesheet" href="css/midterm.css">
 	<link rel="shortcut icon" type="image/jpg" href="img/logo-c.png"/>
 
@@ -22,6 +22,7 @@
 	<script src="js/pages.js"></script>
 	<script src="js/parts.js"></script>
 	<script src="js/maps.js"></script>
+	<script src="js/forms.js"></script>
 	<script src="js/signin.js"></script>
 	<script src="js/app.js"></script>
 
@@ -188,7 +189,7 @@
 		<div data-role="main">
 			<div class="map"></div>
 			<div class="floater bottom right" style="padding: 1em;">
-				<a href="#choose-car-page" class="circle-button">&plus;</a>
+				<a href="#choose-car-page" class="circle-button js-add-from-recent">&plus;</a>
 			</div>
 			<div class="modal" id="recent-drawer">
 				<div class="modal-drawer modal-card top" style="width: 80% !important; top: 2em; left: 10%; height: initial;">
@@ -449,19 +450,22 @@
  		</div>
 
  		<div class="modal" id="see-map" style="z-index: 100000000;">
-	 			<div class="modal-back" data-deactivate="#see-map"></div>
- 				<div class="modal-popup" style="position: relative;">
- 					<div class="map"></div>
-		 			<div class="floater bottom right" style="padding: 1em;">
-						<a href="#choose-location-page" class="circle-button" style="border-radius: 50%;">&plus;</a>
-					</div>
- 					<!-- <div class="map-icon-test" style="position: absolute; left: 10vh; top: 50vh; height: inherit; width: 30px;">
-						<img src="img/location.png" alt="">
-					</div>
- 					<img src="img/map.png" alt=""> -->
- 				</div>
- 				
-	 		</div>
+ 			<div class="modal-back" data-deactivate="#see-map"></div>
+				<div class="modal-popup" style="position: relative;">
+					<div class="map"></div>
+	 			<div class="floater bottom right" style="padding: 1em;">
+					<a href="#choose-location-page" class="circle-button js-choose-car" style="border-radius: 50%;">&plus;</a>
+				</div>
+					<!-- <div class="map-icon-test" style="position: absolute; left: 10vh; top: 50vh; height: inherit; width: 30px;">
+					<img src="img/location.png" alt="">
+				</div>
+					<img src="img/map.png" alt=""> -->
+				</div>
+				
+ 		</div>
+
+ 		<footer data-role="footer" data-template="#footer-template"></footer>
+
  	</section>
 
 
@@ -475,7 +479,7 @@
 
  	<!-- VEHICLE EDIT SECTION -->
  	<section data-role="page" id="vehicle-edit-page">
-		<header data-role="header" style="height: 40vh; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; background-image: url(img/camry.jpeg); background-size: cover;">
+		<header class="head-image" data-role="header" style="height: 40vh; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;  background-size: cover;">
 			<h1>Edit Vehicle Detail</h1>
 			<ul style="z-index: 10000000;">
 				<li>
@@ -492,35 +496,12 @@
 
  			<div class="overscroll">
 	 			<form action="" id="car-edit-form" data-ajax="false" class="form">
-					<!-- <div class="form-control">
-						<label for="edit-model" class="form-label">Model</label>
-						<input class="form-input" type="text" id="edit-model" data-role="none" placeholder="Camry">
-					</div>
-					<div class="form-control">
-						<label for="edit-make" class="form-label">Make</label>
-						<input class="form-input" type="text" id="edit-make" data-role="none" placeholder="Toyota">
-					</div>
-					<div class="form-control">
-						<label for="edit-vehicle-type" class="form-label">Type</label>
-						<select class="form-input" type="text" id="edit-vehicle-type" data-role="none">
-							<option value="1">Sedan</option>
-							<option value="2">SUV</option>
-							<option value="3">Convertible</option>
-							<option value="3">Pick-up</option>
-						</select>
-					</div>
-					<div class="form-control">
-						<label for="edit-color" class="form-label">Color</label>
-						<input class="form-input" type="text" id="edit-color" data-role="none" placeholder="Color">
-					</div>
-					<div class="form-control">
-						<label for="edit-location" class="form-label">Location</label>
-						<input class="form-input" type="text" id="edit-location" data-role="none" placeholder="Daly City">
-					</div>
-				
-	 				<div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
-		 				<a href="#" data-rel="back" class="form-button signin-button" style="float: none; margin: 0 auto;">Save</a>
-		 			</div> -->
+	 				<div class="form-edit-car"></div>
+		 			<div class="form-control display-flex" style="overflow: hidden; margin: 1.5em 0;">
+	 					<div class="flex-stretch"></div>
+		 				<input type="submit"  class="form-button signin-button car-edit-submit" data-role="none" value="Save">
+	 					<div class="flex-stretch"></div>
+		 			</div>
 		 		</form>
 		 	</div>
  		</div>
@@ -541,46 +522,27 @@
 			<h1>Vehicle Detail</h1>
 			<ul style="z-index: 10000000;">
 				<li>
-					<a href="#" data-rel="back" style="text-align: left;">
+					<a href="#" data-rel="back">
 						<img src="img/back.png" alt="" style="width:  10%; margin-top: 10px;">
 					</a>
 				</li>
 				<li class="flex-stretch"></li>
 			</ul>
+			
 		</header>
 
  		<div data-role="main">
  			<div style="margin-bottom: 1vh;"></div>
  			<div class="overscroll">
 	 			<form action="" id="add-new-form" data-ajax="false" class="form">
-					<div class="form-control">
-						<label for="new-model" class="form-label">Model</label>
-						<input class="form-input" type="text" id="new-model" data-role="none" placeholder="Model">
-					</div>
-					<div class="form-control">
-						<label for="new-make" class="form-label">Make</label>
-						<input class="form-input" type="text" id="new-make" data-role="none" placeholder="Make">
-					</div>
-					<div class="form-control">
-						<label for="new-vehicle-type" class="form-label">Type</label>
-						<select class="form-input" type="text" id="new-vehicle-type" data-role="none">
-							<option value="1">Sedan</option>
-							<option value="2">SUV</option>
-							<option value="3">Convertible</option>
-							<option value="3">Pick-up</option>
-						</select>
-					</div>
-					<div class="form-control">
-						<label for="new-color" class="form-label">Color</label>
-						<input class="form-input" type="text" id="new-color" data-role="none" placeholder="Color">
-					</div>
-					<div class="form-control">
-						<label for="new-location" class="form-label">Location</label>
-						<input class="form-input" type="text" id="new-location" data-role="none" placeholder="Location">
-					</div>
-				
-	 				<div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
-		 				<a href="#vehicle-profile-page" class="form-button signin-button" style="float: none; margin: 0 auto;">Save</a>
+	 				<div class="form-add-car"></div>
+	 				<!-- <div class="form-control" style="overflow: hidden; margin: 1.5em 0;">
+		 				<a href="#" class="form-button signin-button car-add-submit" style="float: none; margin: 0 auto;">Save</a>
+		 			</div> -->
+	 				<div class="form-control display-flex" style="overflow: hidden; margin: 1.5em 0;">
+	 					<div class="flex-stretch"></div>
+		 				<input type="submit"  class="form-button signin-button car-add-submit" data-role="none" value="Save">
+	 					<div class="flex-stretch"></div>
 		 			</div>
 		 		</form>
 		 	</div>
@@ -620,9 +582,16 @@
  			<div style="margin-bottom: 1vh;"></div>
 
  			<div class="overscroll">
-	 			<form action="" id="edit-form" data-ajax="false" class="form">
-					<div>Create New Vehicle</div>
-					<div>Choose Vehicle</div>
+	 			<form action="" id="edit-form" data-ajax="false" class="form" style="padding: 1em;">
+					<div>
+						<a href="#add-new-page" class="form-button edit-button">Create New Vehicle</a>
+					</div>
+					<p style="text-align: center;">Or Choose One Below</p>
+					<div>
+						<div class="form-select">
+							<select name="" id="location-choose-car" data-role="none"></select>
+						</div>
+					</div>
 		 		</form>
 		 	</div>
  		</div>
@@ -637,22 +606,18 @@
 		 	<h1>Choose Location</h1>
  			<ul style="z-index: 10000000000;">
  				<li>
- 					<a href="#" data-rel="back" style="text-align: left">
-						<!-- <img src="img/back.png" alt="" style="margin-top: 10px;"> -->
-						Back
-					</a>
+ 					<a href="#" data-rel="back" style="text-align: left">Back</a>
  				</li>
  				<li class="flex-stretch"></li>
 				<li>
-					<a href="#location-description-page">
-						<!-- <img src="img/next.png" alt="" style="margin-top: 10px;"> -->
-						Next
-					</a>
+					<a href="#location-description-page">Next</a>
 				</li>
 			</ul>
  		</header>
 
  		<div data-role="main" class="display-flex flex-vertical">
+ 			<input type="hidden" id="location-lat">
+         	<input type="hidden" id="location-lng">
  			<div class="map"></div>
  		</div>
  	</section>
@@ -666,25 +631,19 @@
 			<h1>Describe Vehicle</h1>
  			<ul style="z-index: 10000000000;">
  				<li>
- 					<a href="#" data-rel="back" style="text-align: left">
-						<!-- <img src="img/back.png" alt="" style="margin-top: 10px;"> -->
-						Back
-					</a>
+ 					<a href="#" data-rel="back" style="text-align: left">Back</a>
  				</li>
  				<li class="flex-stretch"></li>
 				<li>
-					<a href="#" class="js-add-location">
-						<!-- <img src="img/save.png" alt="" style="margin-top: 10px;"> -->
-						Save
-					</a>
+					<a href="#" class="location-add-submit">Save</a>
 				</li>
 			</ul>
 		</header>
 
  		<div data-role="main" class="display-flex flex-vertical">
  			<div class="overscroll">
- 				<form action="" style="padding: 1em;" id="location-description-form">
- 					<label for="location-description" class="form-label">Location Description</label>
+ 				<form action="" style="padding: 1em;">
+ 					<input type="hidden" id="location-redirect">
  					<div class="form-control">
  						<textarea name="location-description" id="location-description" rows="10" class="form-input" data-role="none"></textarea>
  					</div>

@@ -25,6 +25,7 @@ const checkSigninForm = async () => {
 		sessionStorage.userId = user.result[0].id;
 
 		$("#signin-form")[0].reset();
+		$.mobile.navigate("#recent-page");
 	} else {
 		console.log("logged out")
 		sessionStorage.removeItem("userId");
@@ -50,3 +51,48 @@ const checkUserId = () => {
 			$.mobile.navigate("#recent-page");
 	};
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
