@@ -191,6 +191,14 @@
 			<div class="floater bottom right" style="padding: 1em;">
 				<a href="#choose-car-page" class="circle-button js-add-from-recent">&plus;</a>
 			</div>
+
+			<div class="floater top left" style="width: 100%; padding: 1em;">
+				<form id="recent-search" data-ajax="false">
+						<input type="search" placeholder="Search" id="recent-search-value" data-role="none">
+					</form>
+			</div>
+
+
 			<div class="modal" id="recent-drawer">
 				<div class="modal-drawer modal-card top" style="width: 80% !important; top: 2em; left: 10%; height: initial;">
 					<div class="modal-body"></div>
@@ -239,22 +247,23 @@
  		<div data-role="main" class="display-flex flex-vertical">
  			<div class="middle-title" style="height: 14vh;">
 				<div class="search">
-					<form>
-						<input type="search" placeholder="Search">
+					<form id="list-search" data-ajax="false">
+						<input type="search" placeholder="Search" id="list-search-value" data-role="none">
 					</form>
 
 				<!-- Question: display sort and filter -->
 					<div class="sort">
-						<select>
+						<!-- <select>
 							<option value="1">Newest</option>
 							<option value="2">Oldest</option>
 							<option value="3">Alphabet</option>
 						</select>
 						<select>
-							<option value="1">Model Name</option>
-							<option value="2">Type</option>
-							<option value="3">Location</option>
-						</select>
+							<option value="1">Model</option>
+							<option value="2">Make</option>
+							<option value="3">Type</option>
+						</select> -->
+						<ul class="filter-set"></ul>
 					</div>
 				</div>
 	 			<hr>
@@ -385,6 +394,38 @@
 	</section>
 
 
+	<section data-role="page" id="user-upload-page">
+		<header data-role="header" style="height: 12vh;">
+			<h1>Upload Image</h1>
+			<ul style="z-index: 10000000;">
+				<li>
+ 					<a href="#" data-rel="back" style="text-align: left;">Back</a>
+ 				</li>
+ 				<li class="flex-stretch"></li>
+				<li>
+					<a href="#" class="user-upload-submit">Save</a>
+				</li>
+
+			</ul>
+		</header>
+
+ 		<div data-role="main" class="display-flex flex-vertical">
+
+ 			<div class="overscroll">
+	 			<form action="" id="user-upload-form" data-ajax="false" class="form" style="padding: 1em;">
+	 				<input type="hidden" id="user-upload-image">
+	 				<label class="image-uploader full">
+	 					<input type="file" data-role="none" id="user-upload-input">
+	 				</label>
+	 				<label for="user-upload-input" class="floater bottom left" style="padding: 1em;">
+	 					<img src="img/add.png" alt="" style="width: 20%;">
+	 				</label>
+		 		</form>
+		 	</div>
+ 		</div>
+ 	</section>
+
+
 
 
 
@@ -506,13 +547,6 @@
 		 	</div>
  		</div>
  	</section>
-
-
-
-
-
-
-
 
 
 

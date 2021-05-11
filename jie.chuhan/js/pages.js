@@ -46,11 +46,16 @@ const ListPage = async () => {
 		type: "cars_by_user_id",
 		params: [sessionStorage.userId]
 	});
+	
 	console.log(cars);
 
-	car_template = cars.result.length ? makeCarList(cars.result) : `<div class="car" style="padding-left: 5%;">No cars yet. Try adding some cars.<div>`
+	// car_template = cars.result.length ? makeCarList(cars.result) : `<div class="car" style="padding-left: 5%;">No cars yet. Try adding some cars.<div>`
 
-	$("#list-page .carList").html(car_template);
+	// $("#list-page .carList").html(car_template);
+
+	$(".filter-set").html(filterList(cars.result, "type"))
+
+	makeCarListSet(cars.result, "No cars yet. Try adding some cars.")
 }
 
 const UserProfilePage = async () => {
@@ -73,6 +78,21 @@ const UserProfilePage = async () => {
 	$("#profile-form").html(makeUserProfileUpdateForm(user.result[0]));
 	$("#user-profile-page .password-modal").html(makeUserPassword(user.result[0]));
 	$("#password-form").html(makeUserPasswordUpdateForm(user.result[0]));
+}
+
+const UserUploadPage = async () => {
+	let user = await query({
+		type: "user_by_id",
+		params: [sessionStorage.userId]
+	});
+
+	console.log(user.result);
+	// console.log(car.result[0].img);
+	$("#user-upload-image").val(user.result[0].img)
+	$(".image-uploader").css({
+		"background-image":
+		`url(${user.result[0].img})`
+	});
 }
 
 const VehicleProfilePage = async () => {

@@ -18,6 +18,7 @@ $(()=> {
 			case "recent-page": RecentPage(); break;
 			case "list-page": ListPage(); break;
 			case "user-profile-page": UserProfilePage(); break;
+			case "user-upload-page": UserUploadPage(); break;
 			case "vehicle-profile-page": VehicleProfilePage(); break;
 			case "vehicle-edit-page": VehicleEditPage(); break;
 			case "add-new-page": VehicleAddPage(); break;
@@ -61,6 +62,25 @@ $(()=> {
     	e.preventDefault();
     	checkUserPasswordForm();
     })
+    .on("change",".image-uploader input",function(e){
+	    checkUpload(this.files[0])
+	    .then(d=>{
+	        console.log(d)
+	        $("#user-upload-image").val('uploads/' + d.result);
+			$(".image-uploader").css({
+				"background-image":
+				`url(uploads/${ d.result})`
+			});
+	    })
+	})
+	.on("submit", "#list-search", function(e){
+		e.preventDefault();
+    	checkSearchForm();
+	})
+	.on("submit", "#recent-search", function(e){
+		e.preventDefault();
+    	checkRecentSearchForm();
+	})
 
 
 
@@ -81,12 +101,22 @@ $(()=> {
          .html(FormSelectOptions([{id:sessionStorage.carId,name:"chosen"}]))
       $("#location-redirect").val(-2);
    })
-   .on("click",".js-add-from-recent",function(e){
+	.on("click",".js-add-from-recent",function(e){
       $("#location-redirect").val(-3);
    })
 	.on("click",".location-add-submit",function(e){
     	checkLocationAddForm();
-	})
+    })
+    .on("click",".user-upload-submit",function(e){
+    	checkUserUploadForm();
+    })
+    .on("click", ".car-delete", function(e){
+    	console.log("123");
+    	checkCarDelete($(this).data('id'));
+    })
+    .on("click", ".filter", function(e){
+    	checkListFilter($(this).data());
+    })
 
 
 	// DATA ACTIVATE METHODS

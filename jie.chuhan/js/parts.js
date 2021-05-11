@@ -17,12 +17,17 @@ const makeUserProfile = (o, car) => `
 	<div class="middle-title">
 		<div class="profile-username">${o.firstname} ${o.lastname}</div>
 		<h3>${o.email}</h3>
-
 		<hr>
 	</div>
 
 	<div class="down-section">
 		<div class="overscroll">
+			<div class="floater up right">
+				<a href="#user-upload-page" class="icon">
+			      	<img src="img/edit.png" alt="" style="font-size: 2em;">
+			    </a>
+			</div>
+		
 			<div class="display-data">
 				<div class="display-text">
  					<p>You have total</p>
@@ -119,7 +124,7 @@ const CarProfilePage = templater(o=> `
 			<div class="display-data">
 				<ul>
 				<li style="height: 5vh;">
-					<img src="img/trash.png" alt="" style="height: 2em; padding: 0 1em; align-self: center;">
+					<img src="img/trash.png" alt="" style="height: 2em; padding: 0 1em; align-self: center;" class="car-delete" data-id="${o.id}">
 				</li>
 				<li style="height: 5vh;">
 					<a href="#vehicle-edit-page">
@@ -361,6 +366,48 @@ const makeUserPasswordUpdateForm = o => `
 		<div class="flex-stretch"></div>
 	</div>
 `
+
+
+const makeCarListSet = (cars, missing_text="") => {
+	console.log(cars);
+	car_template = cars.length ? 
+	makeCarList(cars) :
+	`<div class="car" style="padding-left: 5%;">${missing_text}<div>`
+
+	$("#list-page .carList").html(car_template);
+}
+
+const capitalized = s => s[0].toUpperCase() + s.substr(1);
+
+
+const filterList = (cars, type) => {
+	let a = [...(new Set(cars.map(o=>o[type])))];
+	return templater(o=> o?`
+		<li class="filter" data-field="${type}" data-value="${o}">
+			${capitalized(o)}
+		</li> `: ''
+	)(a);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

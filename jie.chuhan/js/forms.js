@@ -158,6 +158,97 @@ const checkLocationAddForm = () => {
 
 
 
+const checkUserUploadForm = () => {
+   let upload = $("#user-upload-image").val();
+   if(upload == "") return;
+
+   query({
+      type:'update_user_image',
+      params:[upload,sessionStorage.userId]
+   }).then(d=>{
+      if(d.error) {
+         throw d.error;
+      }
+      window.history.go(-1);
+   })
+}
+
+
+
+
+const checkCarDelete = (id) => {
+	query({
+		type: 'delete_car',
+		params: [id]
+	}).then(d=>{
+	if(d.error) {
+         throw d.error;
+      }
+      window.history.go(-1);
+	})
+}
+
+const checkSearchForm = async () => {
+	let search = $("#list-search-value").val();
+	
+	let cars = await query({
+		type: "search_cars",
+		params: [search, sessionStorage.userId]
+	});
+	console.log(search);
+
+	makeCarListSet(cars.result, "No results found.");
+}
+
+const checkRecentSearchForm = () => {
+	let search = $("#recent-search-value").val();
+	console.log(search);
+}
+
+const checkListFilter = async ({field, value}) => {
+	let cars = value == "" ?
+		await query({
+			type: 'car_id',
+			params: [field, value, sessionStorage.userId]
+		}) :
+		await query({
+			type: 'filter_cars',
+			params: [field, value, sessionStorage.userId]
+		});
+
+	makeCarListSet(cars.result, "No cars found.");
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
