@@ -175,7 +175,6 @@ const checkUserUploadForm = () => {
 
 
 
-
 const checkCarDelete = (id) => {
 	query({
 		type: 'delete_car',
@@ -200,16 +199,25 @@ const checkSearchForm = async () => {
 	makeCarListSet(cars.result, "No results found.");
 }
 
-const checkRecentSearchForm = () => {
+const checkRecentSearchForm = async () => {
 	let search = $("#recent-search-value").val();
 	console.log(search);
+	
+	let cars = await query({
+		type: "search_recent_cars",
+		params: [search, sessionStorage.userId]
+	});
+	console.log(cars);
+
+	RecentPage(cars);
+
 }
 
 const checkListFilter = async ({field, value}) => {
 	let cars = value == "" ?
 		await query({
-			type: 'car_id',
-			params: [field, value, sessionStorage.userId]
+			type: 'cars_by_user_id',
+			params: [sessionStorage.userId]
 		}) :
 		await query({
 			type: 'filter_cars',

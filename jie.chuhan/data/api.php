@@ -105,8 +105,25 @@ function makeUpload($file,$folder) {
 
       // SEARCH
       case "search_cars":
-         $p = ["%$p[0]%",$p[1]];
-         return makeQuery($c, "SELECT * FROM `track_202130_cars` WHERE `model` LIKE ? AND `user_id` = ? ", $p);
+         $p = ["%$p[0]%","%$p[0]%", $p[1]];
+         return makeQuery($c, "SELECT * FROM `track_202130_cars` WHERE `model` LIKE ? OR `make` LIKE ? AND `user_id` = ? ", $p);
+
+      // SEARCH
+      case "search_recent_cars":
+         $p = ["%$p[0]%","%$p[0]%",$p[1]];
+         return makeQuery($c, "SELECT *
+            FROM `track_202130_cars` a
+            RIGHT JOIN (
+               SELECT * FROM `track_202130_locations`
+               ORDER BY `date_create` DESC
+            ) l
+            ON a.id = l.car_id
+            WHERE
+               a.make LIKE ? OR
+               a.model LIKE ? AND
+               a.user_id = ?
+            GROUP BY l.car_id
+            ", $p);
 
       case "filter_cars":
          return makeQuery($c, "SELECT * FROM `track_202130_cars` WHERE `$p[0]` = ? AND `user_id` = ? ", [$p[1], $p[2]]);

@@ -1,9 +1,11 @@
-const RecentPage = async () => {
+const RecentPage = async (locations) => {
 	
-	let locations = await query({
-		type: "recent_locations",
-		params: [sessionStorage.userId]
-	});
+	if(!locations) {
+		locations = await query({
+			type: "recent_locations",
+			params: [sessionStorage.userId]
+		});
+	}
 	console.log(locations.result);
 
 	let valid_cars = locations.result.reduce((r, o) => {
@@ -26,15 +28,15 @@ const RecentPage = async () => {
 			// $.mobile.navigate("#vehicle-profile-page")
 
 			// INFOWINDOW EXAMPLE
-			// map_el.data("infoWindow")
-			// 	.open(map_el.data("map"), o)
-			// map_el.data("infoWindow")
-			// 	.setContent(makeCarPopup(valid_cars[i]))
+			map_el.data("infoWindow")
+				.open(map_el.data("map"), o)
+			map_el.data("infoWindow")
+				.setContent(makeCarPopup(valid_cars[i]))
 
 			// ACTIVATE EXAMPLE
-			$("#recent-drawer").addClass("active")
-				.find(".modal-body")
-				.html(makeCarPopup(valid_cars[i]))
+			// $("#recent-drawer").addClass("active")
+			// 	.find(".modal-body")
+			// 	.html(makeCarPopup(valid_cars[i]))
 		})
 	})
 
@@ -53,7 +55,7 @@ const ListPage = async () => {
 
 	// $("#list-page .carList").html(car_template);
 
-	$(".filter-set").html(filterList(cars.result, "type"))
+	$(".filter-set").html(makeFilterList(cars.result));
 
 	makeCarListSet(cars.result, "No cars yet. Try adding some cars.")
 }

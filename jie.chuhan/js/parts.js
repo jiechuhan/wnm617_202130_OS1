@@ -134,9 +134,10 @@ const CarProfilePage = templater(o=> `
 			</ul>
 			</div>
 
-			<div class="card display-number"><p>Make: ${o.make}</p></div>
-			<div class="card display-number"><p>Type: ${o.type}</p></div>
-			<div class="card display-number"><p>Color: ${o.color}</p></div>
+			<div class="card display-number"><p><strong>Make:</strong> ${o.make}</p></div>
+			<div class="card display-number"><p><strong>Type:</strong> ${o.type}</p></div>
+			<div class="card display-number"><p><strong>Color:</strong> ${o.color}</p></div>
+			<div class="card display-number"><p class="car-descripton"> ${o.description}</p></div>
 
 			<div class="form-control" style="overflow: hidden; margin: 1.5em 0;" data-activate="#see-map">
 				<a href="#" class="form-button signin-button" style="float: none; margin: 0 auto; padding: 0.5em 1em; text-align: center; width: 50%;">Click to see map</a>
@@ -178,6 +179,7 @@ const makeCarPopup = o => `
 		</div>
 
 		<div class="flex-none" style="padding:1em;">
+			<p><strong>Model:</strong> ${o.model}</p>
 			<p><strong>Make:</strong> ${o.make}</p>
 			<p><strong>Type:</strong> ${o.type}</p>
 			<p><strong>Color:</strong> ${o.color}</p>
@@ -387,6 +389,13 @@ const filterList = (cars, type) => {
 			${capitalized(o)}
 		</li> `: ''
 	)(a);
+}
+
+const makeFilterList = (cars) => {
+   return `
+   <li class="filter" data-field="type" data-value="">All</li>
+   ${filterList(cars,'type')}
+   `
 }
 
 

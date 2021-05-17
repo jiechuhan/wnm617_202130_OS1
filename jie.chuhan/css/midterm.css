@@ -514,10 +514,10 @@ hr {
 }
 
 .car-image-thumb img {
-  width:6em;
-  height:6em;
+  width: 6em;
+  height: 6em;
   vertical-align: middle;
-  margin-top:2em;
+  margin-top: 3em;
 }
 
 
@@ -572,6 +572,8 @@ input#list-search-value {
 	display: flex;
     list-style: none;
     padding-left: 2%;
+    margin-right: 2%;
+    overflow: scroll;
 }
 
 .filter-set li {
@@ -593,8 +595,10 @@ input#list-search-value {
 }
 
  #list-page .overscroll ul li img {
-	width: 20%;
-	align-self: center;
+	width: 71px;
+    align-self: center;
+    height: 71px;
+    object-fit: cover;
 }
 
 .list-item-text {
@@ -723,6 +727,12 @@ input#list-search-value {
 
 hr {
 	border: 1px solid #e7e6f0;
+}
+
+.car-descripton {
+	padding: 1em;
+	font-size: 0.8em;
+	text-align: left;
 }
 
 

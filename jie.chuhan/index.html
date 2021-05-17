@@ -436,7 +436,7 @@
 
 	<!-- VEHICLE PROFILE SECTION -->
  	<section data-role="page" id="vehicle-profile-page">
- 		<header data-role="header" class="header" style="height: 40vh; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; background-size: cover;">
+ 		<header data-role="header" class="header car-image" style="height: 40vh; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; background-size: cover; position: relative;">
  				<!-- <a href="#" data-rel="back">Back</a> -->
  			<h1>Vehicle Detail</h1>
  			<ul style="z-index: 10000000;">
@@ -447,6 +447,14 @@
 				</li>
 				<li class="flex-stretch"></li>
 			</ul>
+			<div class="floater bottom right" style="z-index: 100000000000; text-align: right; padding-right: 1em; width: 50%;">
+				<form action="" data-ajax="false" id="car-update-image-form">
+					<input type="file" id="car-update-image-input" class="hidden" data-role="none">
+					<label for="car-update-image-input">
+						<img src="img/edit.png" alt="">
+					</label>
+				</form>
+			</div>
  		</header>
 
  		<div data-role="main" class="display-flex flex-vertical profile">
@@ -520,7 +528,7 @@
 
  	<!-- VEHICLE EDIT SECTION -->
  	<section data-role="page" id="vehicle-edit-page">
-		<header class="head-image" data-role="header" style="height: 40vh; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;  background-size: cover;">
+		<header class="head-image car-image" data-role="header" style="height: 40vh; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;  background-size: cover;">
 			<h1>Edit Vehicle Detail</h1>
 			<ul style="z-index: 10000000;">
 				<li>
@@ -530,6 +538,15 @@
 				</li>
 				<li class="flex-stretch"></li>
 			</ul>
+
+			<div class="floater bottom right" style="z-index: 100000000000; text-align: right; padding-right: 1em; width: 50%;">
+				<form action="" data-ajax="false" id="car-edit-image-form">
+					<input type="file" id="car-edit-image-input" class="hidden" data-role="none">
+					<label for="car-edit-image-input">
+						<img src="img/edit.png" alt="">
+					</label>
+				</form>
+			</div>
 		</header>
 
  		<div data-role="main" class="display-flex flex-vertical">

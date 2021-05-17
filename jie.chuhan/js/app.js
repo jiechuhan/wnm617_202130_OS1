@@ -81,6 +81,44 @@ $(()=> {
 		e.preventDefault();
     	checkRecentSearchForm();
 	})
+	.on("change","#car-update-image-input",function(e){
+	    checkUpload(this.files[0])
+	    .then(d=>{
+	        console.log(d)
+	        if(d.error)
+	    		throw "Uploading failed: " + d.error;
+
+	        let image_location = 'uploads/' + d.result;
+	         query({
+			      type:'update_car_image',
+			      params:[image_location, sessionStorage.carId]
+			   }).then(d=>{
+			      if(d.error) {
+			         throw d.error;
+			      }
+			      $(".header .car-image").css({"background-image":`url(${image_location})`})
+			   })
+	    })
+	})
+	.on("change","#car-edit-image-input",function(e){
+	    checkUpload(this.files[0])
+	    .then(d=>{
+	        console.log(d)
+	        if(d.error)
+	    		throw "Uploading failed: " + d.error;
+
+	        let image_location = 'uploads/' + d.result;
+	         query({
+			      type:'update_car_image',
+			      params:[image_location, sessionStorage.carId]
+			   }).then(d=>{
+			      if(d.error) {
+			         throw d.error;
+			      }
+			      $(".head-image .car-image").css({"background-image":`url(${image_location})`})
+			   })
+	    })
+	})
 
 
 
