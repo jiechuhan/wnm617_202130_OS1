@@ -9,7 +9,6 @@ const RecentPage = async (locations) => {
 	console.log(locations.result);
 
 	let valid_cars = locations.result.reduce((r, o) => {
-		console.log(o.icon);
 		o.icon = o.img;
 		if(o.lat && o.lng) r.push(o);
 		return r;
@@ -57,7 +56,7 @@ const ListPage = async () => {
 
 	$(".filter-set").html(makeFilterList(cars.result));
 
-	makeCarListSet(cars.result, "No cars yet. Try adding some cars.")
+	makeCarListSet(cars.result, "No cars yet. Try adding some cars.");
 }
 
 const UserProfilePage = async () => {

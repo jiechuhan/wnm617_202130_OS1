@@ -189,12 +189,14 @@ const checkCarDelete = (id) => {
 
 const checkSearchForm = async () => {
 	let search = $("#list-search-value").val();
+	console.log(search);
 	
 	let cars = await query({
 		type: "search_cars",
-		params: [search, sessionStorage.userId]
+		params: [search, search, sessionStorage.userId]
 	});
-	console.log(search);
+	console.log(sessionStorage.userId);
+	console.log(cars);
 
 	makeCarListSet(cars.result, "No results found.");
 }
@@ -205,9 +207,10 @@ const checkRecentSearchForm = async () => {
 	
 	let cars = await query({
 		type: "search_recent_cars",
-		params: [search, sessionStorage.userId]
+		params: [search, search, sessionStorage.userId]
 	});
-	console.log(cars);
+	// console.log(cars);
+	// console.log(sessionStorage.userId);
 
 	RecentPage(cars);
 
