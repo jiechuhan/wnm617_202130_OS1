@@ -518,6 +518,7 @@ hr {
   height: 6em;
   vertical-align: middle;
   margin-top: 3em;
+  object-fit: cover;
 }
 
 
